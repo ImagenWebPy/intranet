@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/intranet/public/css/custom.css</file>
             <file>file:/C:/wamp/www/intranet/models/login_model.php</file>
             <file>file:/C:/wamp/www/intranet/views/login/index.php</file>
             <file>file:/C:/wamp/www/intranet/controllers/login.php</file>
-            <file>file:/C:/wamp/www/intranet/views/header.php</file>
+            <file>file:/C:/wamp/www/intranet/public/js/function.js</file>
+            <file>file:/C:/wamp/www/intranet/libs/Controller.php</file>
+            <file>file:/C:/wamp/www/intranet/views/login/inc/footer.php</file>
         </group>
     </open-files>
 </project-private>
