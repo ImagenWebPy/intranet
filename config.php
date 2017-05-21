@@ -23,6 +23,6 @@ define('DB_PASS', '');
 define('HASH_PASSWORD_KEY', '!@123456789ABCDEFGHIJKLMNOPRSTWYZ[¿]{?}<->');
 
 // Constantes varias
-define('SITE_TITLE', 'Sistema LHC :: ');
+define('SITE_TITLE', 'Garden Intranet :: ');
 define('IMAGES', URL . 'public/images/');
 define('CANT_REG_PAGINA', 20);

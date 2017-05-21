@@ -1,6 +1,6 @@
 <?php
 
-require 'libs/Database.php';
+//require 'libs/Database.php';
 
 /**
  * Archivo helper.php

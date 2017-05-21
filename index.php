@@ -12,6 +12,8 @@ ob_start();
 
 require 'config.php';
 require 'util/Auth.php';
+//cargarmos las librerias complementarias
+require 'util/Helper.php';
 
 // Also spl_autoload_register (Take a look at it if you like)
 function __autoload($class) {
@@ -31,9 +33,5 @@ $bootstrap = new Bootstrap();
 
 $bootstrap->init();
 
-//cargarmos el helper
-require 'util/Helper.php';
-#inicializamos el helper
-$helper = new Helper();
 
 ob_end_flush();

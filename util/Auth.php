@@ -7,10 +7,10 @@ class Auth {
 
     public static function handleLogin() {
         @session_start();
-        $logged = $_SESSION['loggedIn'];
+        $logged = (!empty($_SESSION['usuario']) ? $_SESSION['usuario'] : '');
         if ($logged == false) {
             session_destroy();
-            header('location: ' . URL . '/login');
+            header('location: ' . URL . 'login');
             exit;
         }
     }
