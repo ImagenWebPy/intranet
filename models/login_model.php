@@ -90,5 +90,24 @@ class Login_Model extends Model {
         }
         return true;
     }
+    
+    public function createUser($data) {
+        #verificamos si existe el email
+        $nombre = $data['nombre'];
+        $apellido = $data['apellido'];
+        $usuario = $data['usuario'];
+        #verificamos que el email sea corporativo
+        $valido = strstr($usuario, '@', FALSE);
+        if (($valido == '@garden.com.py') || ($valido == '@tema.com.py') ) {
+            Session::set('message', array(
+                'type' => 'success',
+                'mensaje' => 'Se ha generado su cuenta. Se le han enviado los datos de acceso a su email.Sí no ha recibido nada verifique su casilla de correo no deseado (SPAM).'));
+        } else {
+            Session::set('message', array(
+                'type' => 'error',
+                'mensaje' => 'Lo sentimos, pero la cuenta que esta intentando registrar no pertenece a Garden o Tema. Si el problema persiste contacte con raul.ramirez@garden.com.py'));
+        }
+        return true;
+    }
 
 }

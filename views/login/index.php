@@ -174,6 +174,50 @@ $helper = new Helper();
                 e.handled = true;
             }
         });
+        //Confirmar Cuenta
+        $(document).on('click', '.modal-btn-Crear', function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                var nombre = $(".inputNombre");
+                var apellido = $(".inputApellido");
+                var email = $(".inputEmail");
+                if (nombre.val().trim().length == 0) {
+                    nombre.css('border', '2px solid red');
+                } else {
+                    nombre.css('border', '1px solid #ccc');
+                }
+                if (apellido.val().trim().length == 0) {
+                    apellido.css('border', '2px solid red');
+                } else {
+                    apellido.css('border', '1px solid #ccc');
+                }
+                if (email.val().trim().length == 0) {
+                    email.css('border', '2px solid red');
+                } else {
+                    email.css('border', '1px solid #ccc');
+                }
+                if (email.val().trim().length > 0 && nombre.val().trim().length > 0 && apellido.val().trim().length > 0) {
+                    var existeEmail = isEmail(email.val());
+                    if (existeEmail == true) {
+                        email.css('border', '1px solid #ccc');
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?= URL; ?>login/createUser',
+                            data: {nombre: nombre.val(), apellido: apellido.val(), email: email.val()},
+                            beforeSend: function () {
+                                $('.loader').css('display', 'block');
+                            },
+                            success: function (data) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        email.css('border', '2px solid red');
+                    }
+                }
+                e.handled = true;
+            }
+        });
     });
 </script>
 <?php

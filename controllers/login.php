@@ -52,5 +52,16 @@ class Login extends Controller {
         $datos = $this->model->resetUserPass($data);
         echo json_encode($datos);
     }
+    
+    public function createUser() {
+        header('Content-Type: application/json');
+        $data = array(
+            'nombre' => $this->helper->cleanInput($_POST['nombre']),
+            'apellido' => $this->helper->cleanInput($_POST['apellido']),
+            'usuario' => $this->helper->cleanInput($_POST['email'])
+        );
+        $datos = $this->model->createUser($data);
+        echo json_encode($datos);
+    }
 
 }
