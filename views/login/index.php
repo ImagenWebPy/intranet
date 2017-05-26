@@ -17,9 +17,8 @@ $helper = new Helper();
                     <form role="form" method="POST" id="frmLogin" action="<?= URL; ?>login/iniciar">
                         <fieldset>
                             <div class="row">
-                                <div class="center-block">
-                                    <img class="profile-img"
-                                         src="<?= URL; ?>public/images/garden-logo.png" alt="Garden Automotores S.A.">
+                                <div class="center-block centrarLogin">
+                                    <img class="profile-img" src="<?= URL; ?>public/assets/img/logo-garden.png" alt="Garden Automotores S.A." width="100">
                                 </div>
                             </div>
                             <div class="row">

@@ -10,7 +10,7 @@ class Login extends Controller {
     public function index() {
 
         #cargamos la vista
-        $this->view->title = 'Login';
+        $this->view->title = 'Inicie Sesión';
         $this->view->render('login/inc/header');
         $this->view->render('login/index');
         $this->view->render('login/inc/footer');
