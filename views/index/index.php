@@ -15,14 +15,14 @@
         <aside>
             <div class="mb-body">
                 <div class="mb-header hidden-xs">
-                    <img src="assets/img/logo.png" class="logo" alt="Logo">
+                    <img src="<?= URL; ?>public/assets/img/logo.png" class="logo" alt="Logo">
                     <p class="mb-site-descr">Multipurpose Portfolio</p>
                 </div>
                 <div class="mb-content">
                     <nav>
                         <ul id="mb-main-menu">
                             <li class="menu-item-has-children">
-                                <a href="home-expanding-preview.html">Home</a>
+                                <a href="/">Inicio</a>
                                 <a class="submenu-toggler" href="#"><i class="fa fa-plus"></i></a>
                                 <ul>
                                     <li><a href="home.html">Home v1 - Sidebar Menu / Gallery</a></li>
@@ -92,7 +92,7 @@
         <div id="header-mobile" class="visible-xs">
             <header>
                 <div class="m-header-body">
-                    <img src="assets/img/logo_white.png" class="logo" alt="Logo">
+                    <img src="<?= URL; ?>public/assets/img/logo_white.png" class="logo" alt="Logo">
                     <p class="m-site-descr">Multipurpose Portfolio</p>
                 </div>
             </header>
