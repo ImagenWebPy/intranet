@@ -90,7 +90,7 @@ class Login_Model extends Model {
         }
         return true;
     }
-    
+
     public function createUser($data) {
         #verificamos si existe el email
         $nombre = $data['nombre'];
@@ -98,7 +98,7 @@ class Login_Model extends Model {
         $usuario = $data['usuario'];
         #verificamos que el email sea corporativo
         $valido = strstr($usuario, '@', FALSE);
-        if (($valido == '@garden.com.py') || ($valido == '@tema.com.py') ) {
+        if (($valido == '@garden.com.py') || ($valido == '@tema.com.py') || ($valido == '@nissan.com.py')) {
             Session::set('message', array(
                 'type' => 'success',
                 'mensaje' => 'Se ha generado su cuenta. Se le han enviado los datos de acceso a su email.Sí no ha recibido nada verifique su casilla de correo no deseado (SPAM).'));

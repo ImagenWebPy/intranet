@@ -6,17 +6,12 @@
     <head>
         <meta charset="utf-8">
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-
         <title><?= SITE_TITLE; ?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
-
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
-
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/style.css">
         <script src="<?= URL; ?>public/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -88,7 +83,7 @@
                             </nav>
                         </div>
                         <div class="mb-footer">
-                            <h4>About us</h4>
+                            <h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4>
                             <p>We are team of creative photographers. We passionate with photography and other creative things.</p>
                             <div class="mb-social">
                                 <a href=""><i class="fa fa-twitter"></i></a>

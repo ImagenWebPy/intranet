@@ -26,7 +26,7 @@ $helper = new Helper();
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-user"></i>
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
                                             </span> 
                                             <input class="form-control" placeholder="E-mail" name="usuario" type="email" autofocus>
                                         </div>
@@ -34,7 +34,7 @@ $helper = new Helper();
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-lock"></i>
+                                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                             </span>
                                             <input class="form-control" placeholder="Contraseña" name="contrasena" type="password" value="">
                                         </div>

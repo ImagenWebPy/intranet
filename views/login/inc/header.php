@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= URL; ?>public/assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/custom.css">
         <script src="<?= URL; ?>public/assets/js/vendor/jquery-1.10.2.min.js"></script>
     </head>
