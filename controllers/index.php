@@ -8,7 +8,7 @@ class Index extends Controller {
     }
     
     function index() {
-        $this->view->title = 'Inicio';
+        $this->view->title = 'Institucional - Inicio';
         $this->view->render('header');
         $this->view->render('index/index');
         $this->view->render('footer');
