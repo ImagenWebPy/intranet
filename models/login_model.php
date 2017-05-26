@@ -98,14 +98,30 @@ class Login_Model extends Model {
         $usuario = $data['usuario'];
         #verificamos que el email sea corporativo
         $valido = strstr($usuario, '@', FALSE);
-        if (($valido == '@garden.com.py') || ($valido == '@tema.com.py') || ($valido == '@nissan.com.py')) {
-            Session::set('message', array(
-                'type' => 'success',
-                'mensaje' => 'Se ha generado su cuenta. Se le han enviado los datos de acceso a su email.Sí no ha recibido nada verifique su casilla de correo no deseado (SPAM).'));
-        } else {
-            Session::set('message', array(
-                'type' => 'error',
-                'mensaje' => 'Lo sentimos, pero la cuenta que esta intentando registrar no pertenece a Garden o Tema. Si el problema persiste contacte con raul.ramirez@garden.com.py'));
+        switch ($valido) {
+            case '@garden.com.py':
+            case '@tema.com.py':
+            case '@nissan.com.py':
+                #verificamos que la cuenta aún no se haya creado
+                $existe = $this->db->select("select usuario from usuario where usuario = '$usuario'");
+                if (empty($existe)) {
+                    #generamos una contraseña para el nuevo usuario
+                    $pass = Hash::create('sha256', 'garden2017', HASH_PASSWORD_KEY);
+                    
+                    Session::set('message', array(
+                        'type' => 'success',
+                        'mensaje' => 'Se ha generado su cuenta. Se le han enviado los datos de acceso a su email.Sí no ha recibido nada verifique su casilla de correo no deseado (SPAM).'));
+                } else {
+                    Session::set('message', array(
+                        'type' => 'error',
+                        'mensaje' => 'Lo sentimos, pero la cuenta que está intentando registrar ya existe en el sistema'));
+                }
+                break;
+            default :
+                Session::set('message', array(
+                    'type' => 'error',
+                    'mensaje' => 'Lo sentimos, pero la cuenta que esta intentando registrar no pertenece a Garden o Tema. Si el problema persiste contacte con raul.ramirez@garden.com.py'));
+                break;
         }
         return true;
     }

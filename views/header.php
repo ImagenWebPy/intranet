@@ -13,6 +13,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/style.css">
+        <link rel="stylesheet" href="<?= URL; ?>public/assets/css/custom.css">
         <script src="<?= URL; ?>public/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body class="menu-bar-opened menu-bar-ontop black-body">
@@ -83,8 +84,8 @@
                             </nav>
                         </div>
                         <div class="mb-footer">
-                            <h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4>
-                            <p>We are team of creative photographers. We passionate with photography and other creative things.</p>
+                            <a class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
+                            <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
                             <div class="mb-social">
                                 <a href=""><i class="fa fa-twitter"></i></a>
                                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -94,8 +95,8 @@
                                 <a href=""><i class="fa fa-tumblr"></i></a>
                             </div>
                             <div class="mb-copyright">
-                                <p>© 2014 All rights reserved</p>
-                                <p>Developed by Azelab</p>
+                                <p>© 2017 Todos los Derechos Reservados</p>
+                                <p>Desarrollado por Marketing</p>
                             </div>
                         </div>
                     </div> <!-- mb-body -->
