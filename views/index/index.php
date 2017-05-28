@@ -12,7 +12,7 @@
             <ul class="gallety-filters">
                 <li class="active"><a data-filter="*" href="#">Todos</a></li>
                 <?php foreach ($this->helper->listadoCategorias() as $categorias): ?>
-                    <li><a data-filter="<?= $categorias['tag']; ?>" href="00#"000><?= $categorias['descripcion']; ?></a></li>
+                    <li><a data-filter="<?= $categorias['tag']; ?>" href="#"><?= utf8_encode($categorias['descripcion']); ?></a></li>
                 <?php endforeach; ?>
                 <li class="gf-underline"></li>
             </ul>
