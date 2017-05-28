@@ -10,13 +10,117 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-21 19:32:03
+Date: 2017-05-28 09:12:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `usuario`
+-- Table structure for categoria
+-- ----------------------------
+DROP TABLE IF EXISTS `categoria`;
+CREATE TABLE `categoria` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) NOT NULL,
+  `tag` varchar(20) DEFAULT NULL,
+  `estado` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of categoria
+-- ----------------------------
+INSERT INTO `categoria` VALUES ('1', 'Institucional', 'institucional', '1');
+INSERT INTO `categoria` VALUES ('2', 'Kia', 'kia', '1');
+INSERT INTO `categoria` VALUES ('3', 'Chevrolet', 'chevrolet', '1');
+INSERT INTO `categoria` VALUES ('4', 'BMW Motorrad', 'motorrad', '1');
+INSERT INTO `categoria` VALUES ('5', 'MINI', 'mini', '1');
+INSERT INTO `categoria` VALUES ('6', 'Jeep', 'jeep', '1');
+INSERT INTO `categoria` VALUES ('7', 'Dodge', 'dodge', '1');
+INSERT INTO `categoria` VALUES ('8', 'RAM', 'ram', '1');
+INSERT INTO `categoria` VALUES ('9', 'Chrysler', 'chrysler', '1');
+INSERT INTO `categoria` VALUES ('10', 'Mazda', 'mazda', '1');
+INSERT INTO `categoria` VALUES ('11', 'Mopar', 'mopar', '1');
+INSERT INTO `categoria` VALUES ('12', 'Nissan', 'nissan', '1');
+INSERT INTO `categoria` VALUES ('13', 'División Usados', 'usados', '1');
+
+-- ----------------------------
+-- Table structure for post
+-- ----------------------------
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(120) NOT NULL,
+  `contenido` text,
+  `tags` varchar(255) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `estado` int(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for post_archivo
+-- ----------------------------
+DROP TABLE IF EXISTS `post_archivo`;
+CREATE TABLE `post_archivo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) unsigned NOT NULL,
+  `id_tipo_archivo` int(11) unsigned NOT NULL,
+  `descripcion` varchar(80) NOT NULL,
+  `img_principal` int(1) NOT NULL DEFAULT '0',
+  `estado` int(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `fk_idpost_pa` (`id_post`),
+  KEY `fk_idtipoarchivo_pa` (`id_tipo_archivo`),
+  CONSTRAINT `fk_idpost_pa` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_idtipoarchivo_pa` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `post_archivo` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post_archivo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for post_categoria
+-- ----------------------------
+DROP TABLE IF EXISTS `post_categoria`;
+CREATE TABLE `post_categoria` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) unsigned NOT NULL,
+  `id_categoriea` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_idpost_pc` (`id_post`),
+  KEY `fk_idcategoria_pc` (`id_categoriea`),
+  CONSTRAINT `fk_idcategoria_pc` FOREIGN KEY (`id_categoriea`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_idpost_pc` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post_categoria
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tipo_archivo
+-- ----------------------------
+DROP TABLE IF EXISTS `tipo_archivo`;
+CREATE TABLE `tipo_archivo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) NOT NULL,
+  `imagen` varchar(45) DEFAULT NULL,
+  `estado` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tipo_archivo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for usuario
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
@@ -27,7 +131,7 @@ CREATE TABLE `usuario` (
   `apellido` varchar(45) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `imagen` varchar(160) DEFAULT NULL,
-  `estado` int(11) NOT NULL DEFAULT '0',
+  `estado` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_usuario_usuario` (`usuario`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

@@ -2,7 +2,7 @@
     <div id="header-mobile" class="visible-xs">
         <header>
             <div class="m-header-body">
-                <img src="<?= URL; ?>public/assets/img/logo_white.png" class="logo" alt="Logo">
+                <img src="<?= URL; ?>public/assets/img/logo_white.png" class="logo img-responsive" alt="Logo Garden">
                 <p class="m-site-descr">Multipurpose Portfolio</p>
             </div>
         </header>
@@ -10,11 +10,10 @@
     <div id="header" class="hd-filters">
         <header>
             <ul class="gallety-filters">
-                <li class="active"><a data-filter="*" href="#">All</a></li>
-                <li><a data-filter="nature" href="#">Nature</a></li>
-                <li><a data-filter="fashion" href="#">Fashion</a></li>
-                <li><a data-filter="people" href="#">People</a></li>
-                <li><a data-filter="animals" href="#">Animals</a></li>
+                <li class="active"><a data-filter="*" href="#">Todos</a></li>
+                <?php foreach ($this->helper->listadoCategorias() as $categorias): ?>
+                    <li><a data-filter="<?= $categorias['tag']; ?>" href="00#"000><?= $categorias['descripcion']; ?></a></li>
+                <?php endforeach; ?>
                 <li class="gf-underline"></li>
             </ul>
         </header>

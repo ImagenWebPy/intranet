@@ -4770,7 +4770,7 @@ ul.gallety-filters { list-style-type: none; margin: 0; padding: 0; position: rel
 ul.gallety-filters:before, ul.gallety-filters:after { content: " "; display: table; }
 ul.gallety-filters:after { clear: both; }
 ul.gallety-filters > li { float: left; }
-ul.gallety-filters > li > a { display: block; padding: 15px 40px 15px; color: #444649; text-transform: uppercase; }
+ul.gallety-filters > li > a { display: block; padding: 15px 5px 15px; color: #444649; text-transform: uppercase; }
 ul.gallety-filters > li.active > a, ul.gallety-filters > li a:hover { color: #76d898; text-decoration: none; }
 ul.gallety-filters > li.gf-underline { position: absolute; bottom: 0; left: 0; width: 103px; height: 3px; background-color: #76d898; transition: all 0.3s ease; }
 

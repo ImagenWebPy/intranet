@@ -180,5 +180,13 @@ class Helper {
             return $_SERVER['REMOTE_ADDR'];
         }
     }
-
+    
+    /**
+     * Funcion que obtiene el listado de las categorias
+     * @return array
+     */
+    public function listadoCategorias(){
+        $sqlListado = $this->db->select("select c.id,c.descripcion,c.tag from categoria c where c.estado =1");
+        return $sqlListado;
+    }
 }
