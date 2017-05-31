@@ -199,4 +199,18 @@ class Helper {
         return $host;
     }
 
+    /**
+     * Funcion que envia un correo a travez de la funcion mail de PHP.
+     * @param string $para
+     * @param string $asunto
+     * @param string $mensaje
+     */
+    public function sendMail($para, $asunto, $mensaje) {
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: Garden Intranet <noresponder@garden.com.py>' . "\r\n";
+        $headers .= 'Reply-To: noresponder@garden.com.py' . "\r\n";
+        mail($para, $asunto, $mensaje, $headers);
+    }
+
 }

@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("America/Asuncion");
 /**
  * ARCHIVO INDEX
  * @author "Raul Ramirez" <raul.chuky@gmail.com>
