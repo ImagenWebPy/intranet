@@ -10,13 +10,13 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-28 09:12:09
+Date: 2017-05-31 18:12:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for categoria
+-- Table structure for `categoria`
 -- ----------------------------
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
@@ -45,7 +45,7 @@ INSERT INTO `categoria` VALUES ('12', 'Nissan', 'nissan', '1');
 INSERT INTO `categoria` VALUES ('13', 'División Usados', 'usados', '1');
 
 -- ----------------------------
--- Table structure for post
+-- Table structure for `post`
 -- ----------------------------
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
@@ -63,7 +63,7 @@ CREATE TABLE `post` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for post_archivo
+-- Table structure for `post_archivo`
 -- ----------------------------
 DROP TABLE IF EXISTS `post_archivo`;
 CREATE TABLE `post_archivo` (
@@ -85,7 +85,7 @@ CREATE TABLE `post_archivo` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for post_categoria
+-- Table structure for `post_categoria`
 -- ----------------------------
 DROP TABLE IF EXISTS `post_categoria`;
 CREATE TABLE `post_categoria` (
@@ -104,7 +104,26 @@ CREATE TABLE `post_categoria` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for tipo_archivo
+-- Table structure for `post_tipo`
+-- ----------------------------
+DROP TABLE IF EXISTS `post_tipo`;
+CREATE TABLE `post_tipo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) unsigned NOT NULL,
+  `id_tipo_evento` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_id_post_pt` (`id_post`),
+  KEY `fk_id_tipopost_pt` (`id_tipo_evento`),
+  CONSTRAINT `fk_id_post_pt` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_id_tipopost_pt` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of post_tipo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `tipo_archivo`
 -- ----------------------------
 DROP TABLE IF EXISTS `tipo_archivo`;
 CREATE TABLE `tipo_archivo` (
@@ -120,7 +139,26 @@ CREATE TABLE `tipo_archivo` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for usuario
+-- Table structure for `tipo_evento`
+-- ----------------------------
+DROP TABLE IF EXISTS `tipo_evento`;
+CREATE TABLE `tipo_evento` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) NOT NULL,
+  `tag` varchar(45) DEFAULT NULL,
+  `estado` int(1) unsigned DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tipo_evento
+-- ----------------------------
+INSERT INTO `tipo_evento` VALUES ('1', 'Lanzamientos', 'lanzamiento', '1');
+INSERT INTO `tipo_evento` VALUES ('2', 'Eventos', 'evento', '1');
+INSERT INTO `tipo_evento` VALUES ('3', 'Noticias', 'noticia', '1');
+
+-- ----------------------------
+-- Table structure for `usuario`
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (

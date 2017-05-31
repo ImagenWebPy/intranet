@@ -10,10 +10,27 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- FAVICON -->
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/style.css">
         <link rel="stylesheet" href="<?= URL; ?>public/assets/css/custom.css">
+        <link rel="apple-touch-icon" sizes="57x57" href="<?= URL; ?>public/assets/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="<?= URL; ?>public/assets/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="<?= URL; ?>public/assets/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<?= URL; ?>public/assets/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="<?= URL; ?>public/assets/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<?= URL; ?>public/assets/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="<?= URL; ?>public/assets/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<?= URL; ?>public/assets/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= URL; ?>public/assets/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="<?= URL; ?>public/assets/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= URL; ?>public/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="<?= URL; ?>public/assets/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= URL; ?>public/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?= URL; ?>public/assets/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="<?= URL; ?>public/assets/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
         <script src="<?= URL; ?>public/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body class="menu-bar-opened menu-bar-ontop black-body">
@@ -27,59 +44,21 @@
         <!--[if lt IE 9]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
         <div id="wrapper">
             <div id="menu-bar">
                 <aside>
                     <div class="mb-body">
                         <div class="mb-header hidden-xs">
-                            <img src="<?= URL; ?>public/assets/img/logo-garden.png" class="logo" alt="Logo">
-                            <p class="mb-site-descr">Multipurpose Portfolio</p>
+                            <img src="<?= URL; ?>public/assets/img/logo-garden.png" class="logo center-block" alt="Logo Garden" width="100" height="100">
+                            <p class="mb-site-descr text-center">Hola <?= $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido']; ?></p>
                         </div>
                         <div class="mb-content">
                             <nav>
-                                <ul id="mb-main-menu">
-                                    <li class="menu-item-has-children">
-                                        <a href="/">Inicio</a>
-                                        <a class="submenu-toggler" href="#"><i class="fa fa-plus"></i></a>
-                                        <ul>
-                                            <li><a href="home.html">Home v1 - Sidebar Menu / Gallery</a></li>
-                                            <li><a href="top-menu-onepage.html">Home v2 - OnePage</a></li>
-                                            <li><a href="top-menu-home-1.html">Home v3 - Top Menu / Video Background</a></li>
-                                            <li><a href="top-menu-home-2.html">Home v4 - Top Menu / Layer Slider</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a>Gallery</a>
-                                        <a class="submenu-toggler" href="#"><i class="fa fa-plus"></i></a>
-                                        <ul>
-                                            <li><a href="home-col3.html">Gallery 3 Column Grid</a></li>
-                                            <li><a href="home.html">Gallery 4 Column Grid</a></li>
-                                            <li><a href="home-col5.html">Gallery 5 Column Grid</a></li>
-                                            <li><a href="home-masonry.html">Gallery Masonry Grid</a></li>
-                                            <li><a href="home-pinterest-style.html">Gallery Pinterest Style</a></li>
-                                            <li><a href="single-work-full-1.html">Single Work Full Width v1</a></li>
-                                            <li><a href="single-work-full-2.html">Single Work Full Width v2</a></li>
-                                            <li><a href="single-work-with-description.html">Single Work with Description</a></li>
-                                            <li><a href="single-work-thumbnails.html">Single Work with Thumbnails</a></li>
-                                            <li><a href="single-video-full.html">Single Work - Video</a></li>
-                                            <li><a href="single-vimeo-full.html">Single Work - Vimeo</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a>Blog</a>
-                                        <a class="submenu-toggler" href="#"><i class="fa fa-plus"></i></a>
-                                        <ul>
-                                            <li><a href="blog-sidebar.html">Blog with Sidebar</a></li>
-                                            <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                            <li><a href="single-post.html">Blog Single Post</a></li>
-                                            <li><a href="single-post-sidebar.html">Blog Single Post with Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shortcodes.html">Shortcodes</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                <ul id="mb-main-menu" class="gallety-filters menuHeader">
+                                    <li><a href="/">Inicio</a></li>
+                                    <li><a href="about-us.html">Lanzamientos</a></li>
+                                    <li><a href="#" data-filter="evento">Eventos</a></li>
+                                    <li><a href="shortcodes.html">Noticias</a></li>
                                 </ul>
                             </nav>
                         </div>

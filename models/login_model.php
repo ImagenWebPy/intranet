@@ -33,8 +33,8 @@ class Login_Model extends Model {
             // login
             Session::set('usuario', array(
                 'id' => $data['id'],
-                'nombre' => $data['nombre'],
-                'apellido' => $data['apellido'],
+                'nombre' => utf8_encode($data['nombre']),
+                'apellido' => utf8_encode($data['apellido']),
                 'fecha_nacimiento' => $data['fecha_nacimiento'],
                 'usuario' => $data['usuario'], //email
                 'imagen' => $data['imagen']));
