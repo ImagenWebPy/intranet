@@ -1182,7 +1182,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 .btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled]:active, .btn-default[disabled].active, fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active { background-color: white; border-color: #d5d8dd; }
 .btn-default .badge { color: white; background-color: #80181b; }
 
-.btn-primary { color: #80181b; background-color: #444649; border-color: #38393c; }
+.btn-primary {background-color: #444649; border-color: #38393c; }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle { color: #80181b; background-color: #2b2d2f; border-color: #1a1b1c; }
 .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle { background-image: none; }
 .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active { background-color: #444649; border-color: #38393c; }
@@ -1884,7 +1884,7 @@ ul.nav-tabs li.highlight.active.highlight a { background-color: #4ecd7a; color: 
 .carousel .carousel-indicators li { border: 2px solid white; margin: 0 2px; width: 8px; height: 8px; background-color: black; }
 .carousel .carousel-indicators li.active { margin: 0 2px; background-color: white; }
 .carousel .carousel-control { width: 10%; min-width: 22px; }
-.carousel .carousel-control.left span, .carousel .carousel-control.right span { display: block; position: absolute; top: 50%; width: 15px; height: 31px; margin-left: -7px; margin-top: -15px; background: url(assets/img/slider_arrows.png) 0 0 no-repeat; }
+.carousel .carousel-control.left span, .carousel .carousel-control.right span { display: block; position: absolute; top: 50%; width: 15px; height: 31px; margin-left: -7px; margin-top: -15px; background: url(../img/slider_arrows.png) 0 0 no-repeat; }
 .carousel .carousel-control.right span { background-position: -15px 0; right: 30%; margin-right: -7px; }
 .carousel .carousel-control.left span { left: 30%; }
 
@@ -2719,7 +2719,7 @@ ul.nav-tabs li.highlight.active.highlight a { background-color: #4ecd7a; color: 
 /*!==========================================================================
    ElegantIcons Font
    ========================================================================== */
-@font-face { font-family: 'ElegantIcons'; src: url("assets/fonts/ElegantIcons.eot"); src: url("assets/fonts/ElegantIcons.eot?#iefix") format("embedded-opentype"), url("assets/fonts/ElegantIcons.woff") format("woff"), url("assets/fonts/ElegantIcons.ttf") format("truetype"), url("assets/fonts/ElegantIcons.svg#ElegantIcons") format("svg"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ElegantIcons'; src: url("../fonts/ElegantIcons.eot"); src: url("../fonts/ElegantIcons.eot?#iefix") format("embedded-opentype"), url("../fonts/ElegantIcons.woff") format("woff"), url("assets/fonts/ElegantIcons.ttf") format("truetype"), url("../fonts/ElegantIcons.svg#ElegantIcons") format("svg"); font-weight: normal; font-style: normal; }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before { font-family: 'ElegantIcons'; content: attr(data-icon); speak: none; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -4770,7 +4770,7 @@ ul.gallety-filters { list-style-type: none; margin: 0; padding: 0; position: rel
 ul.gallety-filters:before, ul.gallety-filters:after { content: " "; display: table; }
 ul.gallety-filters:after { clear: both; }
 ul.gallety-filters > li { float: left; }
-ul.gallety-filters > li > a { display: block; padding: 15px 5px 15px; color: #444649; text-transform: uppercase; }
+ul.gallety-filters > li > a { display: block; padding: 15px 5px 15px; color: #ababab; text-transform: uppercase; }
 ul.gallety-filters > li.active > a, ul.gallety-filters > li a:hover { color: #80181b; text-decoration: none; }
 ul.gallety-filters > li.gf-underline { position: absolute; bottom: 0; left: 0; width: 103px; height: 3px; background-color: #80181b; transition: all 0.3s ease; }
 
@@ -4829,7 +4829,7 @@ ul.gallety-filters > li.gf-underline { position: absolute; bottom: 0; left: 0; w
 .gallery.gl-cols-6 .gl-item.gl-double { position: relative; min-height: 1px; padding-left: 0; padding-right: 0; }
 @media (min-width: 1200px) { .gallery.gl-cols-6 .gl-item.gl-double { float: left; width: 33.33333%; } }
 .gallery .gl-item-icon { margin-bottom: 0; font-size: 36px; text-align: center; color: white; }
-.gallery .gl-item-title { margin-bottom: 0; font-size: 16px; text-align: center; color: white; text-transform: uppercase; }
+.gallery .gl-item-title { margin-bottom: 0; font-size: 16px; text-align: center; color: white; text-transform: uppercase; font-weight: bold;}
 .gallery .gl-item-category { margin-bottom: 0; font-size: 16px; line-height: 1; text-align: center; color: #8e9095; }
 .gallery.gl-pinterest .gl-item { padding: 5px; }
 .gallery.gl-pinterest .gl-item.gl-double { position: relative; min-height: 1px; padding-left: 0; padding-right: 0; position: relative; min-height: 1px; padding-left: 0; padding-right: 0; position: relative; min-height: 1px; padding-left: 0; padding-right: 0; padding: 5px; }

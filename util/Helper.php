@@ -213,4 +213,26 @@ class Helper {
         mail($para, $asunto, $mensaje, $headers);
     }
 
+    public function getContenidoPrincipal() {
+        $contenido = $this->db->select("SELECT  p.id,
+                                                p.titulo,
+                                                p.contenido,
+                                                (select pa.descripcion from post_archivo pa where pa.id_post = p.id and pa.img_principal = 1 and pa.estado = 1 and pa.id_tipo_archivo = 1) as img
+                                        FROM post p
+                                        where p.estado = 1
+                                        ORDER BY p.fecha DESC
+                                        LIMIT 20");
+        return $contenido;
+    }
+
+    public function getArchivosPOst($idPost) {
+        $contenido = $this->db->select("SELECT pa.descripcion,
+                                                pa.img_principal,
+                                                ta.descripcion as tipoArchivo
+                                        FROM post_archivo pa 
+                                        LEFT JOIN tipo_archivo ta on ta.id = pa.id_tipo_archivo
+                                        WHERE pa.id_post = $idPost;");
+        return $contenido;
+    }
+
 }

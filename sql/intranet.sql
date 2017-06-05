@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-31 18:12:55
+Date: 2017-06-05 18:26:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,11 +56,12 @@ CREATE TABLE `post` (
   `fecha` datetime DEFAULT NULL,
   `estado` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
+INSERT INTO `post` VALUES ('1', '¡El Fanático de la marca más pequeño de la casa!', '<p>No perdimos la oportunidad para darle el mejor cumpleaños de sus sueños. Por eso nos hicimos presente en ese día tan especial y llenamos su día de sorpresas, obsequiándole un tour por las instalaciones del taller de Kia así como varias sorpresas en el festejo de su cumpleaños.</p>\r\n<p>¡Gracias Agustín por dejarnos ser parte de ese momento tan especial!</p>', 'cumpleaños,agustin,fan,pequeño', '2017-05-30 15:04:57', '1');
 
 -- ----------------------------
 -- Table structure for `post_archivo`
@@ -78,11 +79,18 @@ CREATE TABLE `post_archivo` (
   KEY `fk_idtipoarchivo_pa` (`id_tipo_archivo`),
   CONSTRAINT `fk_idpost_pa` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idtipoarchivo_pa` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `post_archivo` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_archivo
 -- ----------------------------
+INSERT INTO `post_archivo` VALUES ('1', '1', '1', 'cumple_agustin_1.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('2', '1', '1', 'cumple_agustin_2.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('3', '1', '1', 'cumple_agustin_3.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('4', '1', '1', 'cumple_agustin_4.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('5', '1', '1', 'cumple_agustin_5.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('6', '1', '1', 'cumple_agustin_6.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('7', '1', '1', 'cumple_agustin_7.jpg', '0', '1');
 
 -- ----------------------------
 -- Table structure for `post_categoria`
@@ -116,11 +124,12 @@ CREATE TABLE `post_tipo` (
   KEY `fk_id_tipopost_pt` (`id_tipo_evento`),
   CONSTRAINT `fk_id_post_pt` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_id_tipopost_pt` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_tipo
 -- ----------------------------
+INSERT INTO `post_tipo` VALUES ('1', '1', '2');
 
 -- ----------------------------
 -- Table structure for `tipo_archivo`
@@ -132,11 +141,16 @@ CREATE TABLE `tipo_archivo` (
   `imagen` varchar(45) DEFAULT NULL,
   `estado` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tipo_archivo
 -- ----------------------------
+INSERT INTO `tipo_archivo` VALUES ('1', 'Imagen', null, '1');
+INSERT INTO `tipo_archivo` VALUES ('2', 'Video', null, '1');
+INSERT INTO `tipo_archivo` VALUES ('3', 'Word', null, '1');
+INSERT INTO `tipo_archivo` VALUES ('4', 'Excel', null, '1');
+INSERT INTO `tipo_archivo` VALUES ('5', 'Power Point', null, '1');
 
 -- ----------------------------
 -- Table structure for `tipo_evento`

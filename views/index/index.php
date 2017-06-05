@@ -1,3 +1,6 @@
+<?php
+$helper = new Helper();
+?>
 <div id="main">
     <div id="header-mobile" class="visible-xs">
         <header>
@@ -21,72 +24,56 @@
     <div class="section no-padding st-invert">
         <section>
             <ul id="gallery-w-preview" class="gallery gl-cols-4 gl-fixed-items">
-                <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="evento">
-                    <a href="#">
-                        <figure>
-                            <img src="http://placehold.it/700x471" alt="">
-                            <figcaption>
-                                <div class="middle"><div class="middle-inner">
-                                        <p class="gl-item-icon"><i class="fa fa-picture-o"></i></p>
-                                        <p class="gl-item-title">Slider</p>
-                                        <p class="gl-item-category">People</p>
-                                    </div></div>
-                            </figcaption>
-                        </figure>
-                    </a>
-                    <div class="gl-preview" style="diplay:none;" data-category="evento">
-                        <span class="glp-arrow"></span>
-                        <a href="#" class="glp-close"></a>
-                        <div class="row gl-preview-container">
-                            <div class="col-sm-8">
-                                <div id="carousel-gallery-1" class="carousel slide" data-ride="carousel" data-interval="false">
+                <?php foreach ($helper->getContenidoPrincipal() as $contenido): ?>
+                    <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="evento">
+                        <a href="#">
+                            <figure>
+                                <img src="<?= URL; ?>public/archivos/<?= $contenido['img']; ?>" alt="">
+                                <figcaption>
+                                    <div class="middle"><div class="middle-inner">
+                                            <p class="gl-item-title"><?= utf8_encode($contenido['titulo']); ?></p>
+                                        </div></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <div class="gl-preview" style="diplay:none;" data-category="evento">
+                            <span class="glp-arrow"></span>
+                            <a href="#" class="glp-close"></a>
+                            <div class="row gl-preview-container">
+                                <div class="col-sm-8">
+                                    <div id="carousel-gallery-1" class="carousel slide" data-ride="carousel" data-interval="false">
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner">
+                                            <?php foreach ($helper->getArchivosPOst($contenido['id']) as $item): ?>
+                                                <div class="item <?= ($item['img_principal'] == 1) ? 'active' : ''; ?>">
+                                                    <img src="<?= URL; ?>public/archivos/<?= $item['descripcion']; ?>" alt="slide">
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <ol class="carousel-indicators">
+                                            <?php for ($i = 0; $i <= (count($helper->getArchivosPOst($contenido['id'])) - 1); $i++): ?>
+                                                <li data-target="#carousel-gallery-1" data-slide-to="<?= $i; ?>" class="active"></li>
+                                            <?php endfor; ?>
+                                        </ol>
+                                        <!-- Controls -->
+                                        <a class="left carousel-control" href="#carousel-post-1" data-slide="prev">
+                                            <span></span>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-post-1" data-slide="next">
+                                            <span></span>
+                                        </a>
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <img src="http://placehold.it/700x471" alt="slide">
-                                        </div>
-                                        <div class="item">
-                                            <img src="http://placehold.it/700x471" alt="slide">
-                                        </div>
-                                        <div class="item">
-                                            <img src="http://placehold.it/700x471" alt="slide">
-                                        </div>
-                                    </div>
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carousel-gallery-1" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carousel-gallery-1" data-slide-to="1"></li>
-                                        <li data-target="#carousel-gallery-1" data-slide-to="2"></li>
-                                    </ol>
-                                    <!-- Controls -->
-                                    <a class="left carousel-control" href="#carousel-post-1" data-slide="prev">
-                                        <span></span>
-                                    </a>
-                                    <a class="right carousel-control" href="#carousel-post-1" data-slide="next">
-                                        <span></span>
-                                    </a>
-
-                                </div> <!-- carousel -->
-                            </div>
-                            <div class="col-sm-4 lg-preview-descr">
-                                <h4>Girl in the street</h4>
-                                <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you. </p>
-                                <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you. </p>
-                                <button class="btn btn-primary glp-readmore">Read More</button>
-                                <div class="mb-social glp-social">
-                                    <p>Share</p>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-tumblr"></i></a>
+                                    </div> <!-- carousel -->
+                                </div>
+                                <div class="col-sm-4 lg-preview-descr">
+                                    <h4><?= utf8_encode($contenido['titulo']); ?></h4>
+                                    <?= utf8_encode($contenido['contenido']); ?>
+                                    <button class="btn btn-primary glp-readmore">Leer màs</button>
                                 </div>
                             </div>
-                        </div>
-                    </div> <!-- gl-preview -->
-                </li>
+                        </div> <!-- gl-preview -->
+                    </li>
+                <?php endforeach; ?>
                 <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="people">
                     <a href="#">
                         <figure>
