@@ -40,31 +40,58 @@ $helper = new Helper();
                             <span class="glp-arrow"></span>
                             <a href="#" class="glp-close"></a>
                             <div class="row gl-preview-container">
-                                <div class="col-sm-8">
-                                    <div id="carousel-gallery-1" class="carousel slide" data-ride="carousel" data-interval="false">
-                                        <!-- Wrapper for slides -->
-                                        <div class="carousel-inner">
-                                            <?php foreach ($helper->getArchivosPOst($contenido['id']) as $item): ?>
-                                                <div class="item <?= ($item['img_principal'] == 1) ? 'active' : ''; ?>">
-                                                    <img src="<?= URL; ?>public/archivos/<?= $item['descripcion']; ?>" alt="slide">
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                        <ol class="carousel-indicators">
-                                            <?php for ($i = 0; $i <= (count($helper->getArchivosPOst($contenido['id'])) - 1); $i++): ?>
-                                                <li data-target="#carousel-gallery-1" data-slide-to="<?= $i; ?>" class="active"></li>
-                                            <?php endfor; ?>
-                                        </ol>
-                                        <!-- Controls -->
-                                        <a class="left carousel-control" href="#carousel-post-1" data-slide="prev">
-                                            <span></span>
-                                        </a>
-                                        <a class="right carousel-control" href="#carousel-post-1" data-slide="next">
-                                            <span></span>
-                                        </a>
+                                <?php
+                                $archivos = $helper->getArchivosPOst($contenido['id']);
+                                ?>
+                                <?php if ($archivos['tipo'] == 'imagen'): ?>
+                                    <div class="col-sm-8">
+                                        <div id="carousel-gallery-1" class="carousel slide" data-ride="carousel" data-interval="false">
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <?php foreach ($archivos['imagenes'] as $item): ?>
+                                                    <div class="item <?= ($item['principal'] == 1) ? 'active' : ''; ?>">
+                                                        <img src="<?= URL; ?>public/archivos/<?= $item['imagen']; ?>" alt="slide">
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <ol class="carousel-indicators">
+                                                <?php
+                                                for ($i = 0; $i <= (count($archivos['imagenes']) - 1); $i++):
+                                                    ?>
+                                                    <li data-target="#carousel-gallery-1" data-slide-to="<?= $i; ?>" class="active"></li>
+                                                <?php endfor; ?>
+                                            </ol>
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-post-1" data-slide="prev">
+                                                <span></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-post-1" data-slide="next">
+                                                <span></span>
+                                            </a>
 
-                                    </div> <!-- carousel -->
-                                </div>
+                                        </div> <!-- carousel -->
+                                    </div>
+                                <?php else: ?>
+                                    <?php
+                                    $imgVideo = '';
+                                    foreach ($archivos['imagenes'] as $item) {
+                                        if ($item['principal'] == 1) {
+                                            $imgVideo = utf8_encode($item['imagen']);
+                                        }
+                                    }
+                                    ?>
+                                    <div class="col-sm-8">
+                                        <div class="glp-video">
+                                            <video class="video-js vjs-default-skin vjs-mental-skin" width="100%" height="100%" controls preload="none"
+                                                   poster="<?= URL; ?>public/archivos/<?= $imgVideo ?>"
+                                                   data-setup="{}">
+                                                       <?php foreach ($archivos['video'] as $item): ?>
+                                                    <source src="<?= URL; ?>/public/archivos/<?= utf8_encode($item['archivo']); ?>" type="<?= $item['type']; ?>" />
+                                                <?php endforeach; ?>
+                                            </video>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                                 <div class="col-sm-4 lg-preview-descr">
                                     <h4><?= utf8_encode($contenido['titulo']); ?></h4>
                                     <?= utf8_encode($contenido['contenido']); ?>
@@ -74,52 +101,6 @@ $helper = new Helper();
                         </div> <!-- gl-preview -->
                     </li>
                 <?php endforeach; ?>
-                <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="people">
-                    <a href="#">
-                        <figure>
-                            <img src="http://d.azelab.com/mental/Demo/video/thumbs/hac.jpg" alt="">
-                            <figcaption>
-                                <div class="middle"><div class="middle-inner">
-                                        <p class="gl-item-icon"><i class="fa fa-play-circle-o"></i></p>
-                                        <p class="gl-item-title">Video JS</p>
-                                        <p class="gl-item-category">People</p>
-                                    </div></div>
-                            </figcaption>
-                        </figure>
-                    </a>
-                    <div class="gl-preview" style="diplay:none;" data-category="people">
-                        <span class="glp-arrow"></span>
-                        <a href="#" class="glp-close"></a>
-                        <div class="row gl-preview-container">
-                            <div class="col-sm-8">
-                                <div class="glp-video">
-                                    <video class="video-js vjs-default-skin vjs-mental-skin" width="100%" height="100%" controls preload="none"
-                                           poster="http://d.azelab.com/mental/Demo/video/thumbs/hac.jpg"
-                                           data-setup="{}">
-                                        <source src="http://d.azelab.com/mental/Demo/video/hac.mp4" type="video/mp4" />
-                                        <!-- <source src="video/hac.webm" type='video/webm' /> -->
-                                        <source src="http://d.azelab.com/mental/Demo/video/hac.ogv" type='video/ogg' />
-                                    </video>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 lg-preview-descr">
-                                <h4>Girl in the street</h4>
-                                <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you. </p>
-                                <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you. </p>
-                                <button class="btn btn-primary glp-readmore">Read More</button>
-                                <div class="mb-social glp-social">
-                                    <p>Share</p>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-tumblr"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- gl-preview -->
-                </li>
             </ul> <!-- gallery -->
         </section>
     </div> <!-- section -->

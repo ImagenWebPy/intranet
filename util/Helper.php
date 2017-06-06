@@ -232,7 +232,42 @@ class Helper {
                                         FROM post_archivo pa 
                                         LEFT JOIN tipo_archivo ta on ta.id = pa.id_tipo_archivo
                                         WHERE pa.id_post = $idPost;");
-        return $contenido;
+        #verificamos que dentro de los archivos no haya ningun video
+        $video = false;
+        foreach ($contenido as $item) {
+            if ($item['tipoArchivo'] == 'Video') {
+                $video = true;
+            }
+        }
+        $data = array(
+            'tipo' => '',
+            'video' => array(),
+            'imagenes' => array()
+        );
+        if ($video == true) {
+            $data['tipo'] = 'video';
+            foreach ($contenido as $item) {
+                if ($item['tipoArchivo'] == 'Video') {
+                    $extension = strstr($item['descripcion'], '.', FALSE);
+                    $extension = str_replace('.', '', $extension);
+                    if ($extension == 'mp4') {
+                        $type = 'video/mp4';
+                    } else {
+                        $type = 'video/ogg';
+                    }
+                    array_push($data['video'], array('archivo' => $item['descripcion'], 'type' => $type));
+                } else {
+                    array_push($data['imagenes'], array('imagen' => $item['descripcion'], 'principal' => $item['img_principal']));
+                }
+            }
+        } else {
+            $data['tipo'] = 'imagen';
+            foreach ($contenido as $item) {
+                if ($item['tipoArchivo'] != 'video')
+                    array_push($data['imagenes'], array('imagen' => $item['descripcion'], 'principal' => $item['img_principal']));
+            }
+        }
+        return $data;
     }
 
 }
