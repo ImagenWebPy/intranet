@@ -25,7 +25,7 @@ $helper = new Helper();
         <section>
             <ul id="gallery-w-preview" class="gallery gl-cols-4 gl-fixed-items">
                 <?php foreach ($helper->getContenidoPrincipal() as $contenido): ?>
-                    <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="evento">
+                    <li class="gl-item gl-fixed-ratio-item gl-loading" data-category="<?= $helper->getTagsPost($contenido['id']); ?>">
                         <a href="#">
                             <figure>
                                 <img src="<?= URL; ?>public/archivos/<?= $contenido['img']; ?>" alt="">
@@ -36,7 +36,7 @@ $helper = new Helper();
                                 </figcaption>
                             </figure>
                         </a>
-                        <div class="gl-preview" style="diplay:none;" data-category="evento">
+                        <div class="gl-preview" style="diplay:none;" data-category="<?= $helper->getTagsPost($contenido['id']); ?>">
                             <span class="glp-arrow"></span>
                             <a href="#" class="glp-close"></a>
                             <div class="row gl-preview-container">

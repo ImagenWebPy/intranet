@@ -270,4 +270,27 @@ class Helper {
         return $data;
     }
 
+    public function getTagsPost($idPost) {
+        $tags = array();
+        $categoria = $this->db->select("SELECT c.descripcion,c.tag FROM post_categoria pc
+                                        LEFT JOIN categoria c on c.id = pc.id_categoria
+                                        where pc.id_post = $idPost");
+        $tipo = $this->db->select("select te.descripcion, te.tag from post_tipo pt
+                                    LEFT JOIN tipo_evento te on te.id = pt.id_tipo_evento
+                                    where pt.id_post = $idPost;");
+        foreach ($categoria as $item) {
+            array_push($tags, $item['tag']);
+        }
+        foreach ($tipo as $item) {
+            array_push($tags, $item['tag']);
+        }
+        $tags = implode(',', $tags);
+        return $tags;
+    }
+
+    public function getTiposEventos() {
+        $eventos = $this->db->select("select te.descripcion,te.tag from tipo_evento te;");
+        return $eventos;
+    }
+
 }

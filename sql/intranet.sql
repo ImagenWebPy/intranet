@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-05 18:26:50
+Date: 2017-06-06 18:24:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,12 +56,18 @@ CREATE TABLE `post` (
   `fecha` datetime DEFAULT NULL,
   `estado` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
 INSERT INTO `post` VALUES ('1', '¡El Fanático de la marca más pequeño de la casa!', '<p>No perdimos la oportunidad para darle el mejor cumpleaños de sus sueños. Por eso nos hicimos presente en ese día tan especial y llenamos su día de sorpresas, obsequiándole un tour por las instalaciones del taller de Kia así como varias sorpresas en el festejo de su cumpleaños.</p>\r\n<p>¡Gracias Agustín por dejarnos ser parte de ese momento tan especial!</p>', 'cumpleaños,agustin,fan,pequeño', '2017-05-30 15:04:57', '1');
+INSERT INTO `post` VALUES ('2', 'El nuevo SUV de Mini', '<p>Se presentó oficialmente el Mini Countryman 2017, el nuevo SUV de Mini. El evento contó con la presencia de clientes y selectos invitados, quienes fueron convocados en Sacramento Brewing Co, para ser partícipes del lanzamiento.</p><p>#CreaHistorias! es el mensaje de la campaña del nuevo SUV de Mini, concepto que transportó a los asistentes a disfrutar de dos ambientes integrados, camping, fogata, libertad y todo lo urbano chic que las instalaciones de Sacramento Brewing Co aportó a los invitados.</p>', 'suv,mini,nuevo,countryman', '2017-05-02 09:31:28', '1');
+INSERT INTO `post` VALUES ('3', '¿Querés salir de la rutina?', '<p>Podés hacerlo como Carlos Turrini, con el nuevo #MINICountryman #CreaHistorias</p>', 'mini,suv,countryman,carlos turrini', '2017-05-08 15:21:13', '1');
+INSERT INTO `post` VALUES ('4', 'DAYTRIP/VAPORCUÉ', null, 'daytrip,vapor cue, excursion,bmw', '2017-05-27 15:36:40', '1');
+INSERT INTO `post` VALUES ('5', 'Inter Run 2017', '<p>El Jeep Renegade presente en el Inter Run 2017. Felicitaciones a todos los participantes!!</p>', 'jeep,renegade,inter,run,2017', '2017-05-14 17:26:41', '1');
+INSERT INTO `post` VALUES ('6', 'Lanzamiento Jeep Renegade', null, 'jeep,renegade,lanzamiento', '2016-06-08 18:11:10', '1');
+INSERT INTO `post` VALUES ('7', 'World Premiere de la Nueva Jeep® Compass 2017!', null, 'jeep,compass,lanzamiento', '2016-11-16 18:20:51', '1');
 
 -- ----------------------------
 -- Table structure for `post_archivo`
@@ -79,7 +85,7 @@ CREATE TABLE `post_archivo` (
   KEY `fk_idtipoarchivo_pa` (`id_tipo_archivo`),
   CONSTRAINT `fk_idpost_pa` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idtipoarchivo_pa` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `post_archivo` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_archivo
@@ -91,6 +97,30 @@ INSERT INTO `post_archivo` VALUES ('4', '1', '1', 'cumple_agustin_4.jpg', '0', '
 INSERT INTO `post_archivo` VALUES ('5', '1', '1', 'cumple_agustin_5.jpg', '0', '1');
 INSERT INTO `post_archivo` VALUES ('6', '1', '1', 'cumple_agustin_6.jpg', '0', '1');
 INSERT INTO `post_archivo` VALUES ('7', '1', '1', 'cumple_agustin_7.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('8', '2', '2', 'lanzamiento_mini_countryman.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('9', '2', '1', 'lanzamiento_mini_countryman.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('10', '3', '2', 'videoCarlosTurrini.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('11', '3', '1', 'carlosturrini.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('12', '4', '1', 'bmw_daytripvaporcue_1.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('13', '4', '1', 'bmw_daytripvaporcue_2.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('14', '4', '1', 'bmw_daytripvaporcue_3.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('15', '4', '1', 'bmw_daytripvaporcue_4.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('16', '4', '1', 'bmw_daytripvaporcue_5.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('17', '4', '1', 'bmw_daytripvaporcue_6.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('18', '4', '1', 'bmw_daytripvaporcue_7.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('19', '4', '1', 'bmw_daytripvaporcue_8.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('20', '4', '1', 'bmw_daytripvaporcue_9.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('21', '4', '1', 'bmw_daytripvaporcue_10.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('22', '4', '1', 'bmw_daytripvaporcue_11.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('23', '4', '1', 'bmw_daytripvaporcue_12.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('24', '4', '1', 'bmw_daytripvaporcue_13.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('25', '4', '1', 'bmw_daytripvaporcue_14.jpg', '0', '1');
+INSERT INTO `post_archivo` VALUES ('26', '5', '1', 'inter_run_2017.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('27', '5', '2', 'inter_run_2017.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('28', '6', '1', 'lanzamiento_renegade_2016.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('29', '6', '2', 'lanzamiento_renegade_2016.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('30', '7', '1', 'lanzamiento_compass_2016.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('31', '7', '2', 'lanzamiento_compass_2016.mp4', '0', '1');
 
 -- ----------------------------
 -- Table structure for `post_categoria`
@@ -99,17 +129,24 @@ DROP TABLE IF EXISTS `post_categoria`;
 CREATE TABLE `post_categoria` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_post` int(11) unsigned NOT NULL,
-  `id_categoriea` int(11) unsigned NOT NULL,
+  `id_categoria` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idpost_pc` (`id_post`),
-  KEY `fk_idcategoria_pc` (`id_categoriea`),
-  CONSTRAINT `fk_idcategoria_pc` FOREIGN KEY (`id_categoriea`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
+  KEY `fk_idcategoria_pc` (`id_categoria`),
+  CONSTRAINT `fk_idcategoria_pc` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idpost_pc` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_categoria
 -- ----------------------------
+INSERT INTO `post_categoria` VALUES ('1', '1', '2');
+INSERT INTO `post_categoria` VALUES ('2', '2', '5');
+INSERT INTO `post_categoria` VALUES ('3', '3', '5');
+INSERT INTO `post_categoria` VALUES ('4', '4', '4');
+INSERT INTO `post_categoria` VALUES ('5', '5', '6');
+INSERT INTO `post_categoria` VALUES ('6', '6', '6');
+INSERT INTO `post_categoria` VALUES ('7', '7', '6');
 
 -- ----------------------------
 -- Table structure for `post_tipo`
@@ -124,12 +161,18 @@ CREATE TABLE `post_tipo` (
   KEY `fk_id_tipopost_pt` (`id_tipo_evento`),
   CONSTRAINT `fk_id_post_pt` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_id_tipopost_pt` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_tipo
 -- ----------------------------
 INSERT INTO `post_tipo` VALUES ('1', '1', '2');
+INSERT INTO `post_tipo` VALUES ('2', '2', '1');
+INSERT INTO `post_tipo` VALUES ('3', '3', '1');
+INSERT INTO `post_tipo` VALUES ('4', '4', '2');
+INSERT INTO `post_tipo` VALUES ('5', '5', '2');
+INSERT INTO `post_tipo` VALUES ('6', '6', '1');
+INSERT INTO `post_tipo` VALUES ('7', '7', '1');
 
 -- ----------------------------
 -- Table structure for `tipo_archivo`

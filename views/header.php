@@ -1,3 +1,6 @@
+<?php
+$helper = new Helper();
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -56,9 +59,9 @@
                             <nav>
                                 <ul id="mb-main-menu" class="gallety-filters menuHeader">
                                     <li><a href="/">Inicio</a></li>
-                                    <li><a href="about-us.html">Lanzamientos</a></li>
-                                    <li><a href="#" data-filter="evento">Eventos</a></li>
-                                    <li><a href="shortcodes.html">Noticias</a></li>
+                                    <?php foreach ($helper->getTiposEventos() as $item): ?>
+                                    <li><a href="#" data-filter="<?= utf8_encode($item['tag']); ?>"><?= utf8_encode($item['descripcion']); ?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </nav>
                         </div>
