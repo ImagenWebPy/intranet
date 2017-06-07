@@ -28,7 +28,7 @@ class Helper {
         $String = str_replace(array('Ó', 'Ò', 'Ô', 'Õ', 'Ö'), "O", $String);
         $String = str_replace(array('ú', 'ù', 'û', 'ü'), "u", $String);
         $String = str_replace(array('Ú', 'Ù', 'Û', 'Ü'), "U", $String);
-        $String = str_replace(array('[', '^', '´', '`', '¨', '~', ']'), "", $String);
+        $String = str_replace(array('?', '[', '^', '´', '`', '¨', '~', ']', '¿', '!', '¡'), "", $String);
         $String = str_replace("ç", "c", $String);
         $String = str_replace("Ç", "C", $String);
         $String = str_replace("ñ", "n", $String);
@@ -291,6 +291,27 @@ class Helper {
     public function getTiposEventos() {
         $eventos = $this->db->select("select te.descripcion,te.tag from tipo_evento te;");
         return $eventos;
+    }
+
+    public function getPostTitle($idPost) {
+        $sql = $this->db->select("select titulo from post where id = $idPost");
+        $data = array(
+            'url' => $this->cleanUrl(utf8_encode($sql[0]['titulo'])),
+            'titulo' => utf8_encode($sql[0]['titulo'])
+        );
+        return $data;
+    }
+
+    public function mostrarMobileLogo() {
+        $content = '<div id="header-mobile" class="visible-xs">
+                        <header>
+                            <div class="m-header-body">
+                                <img src="assets/img/logo_white.png" class="logo" alt="Logo">
+                                <p class="m-site-descr">Multipurpose Portfolio</p>
+                            </div>
+                        </header>
+                    </div>';
+        return $content;
     }
 
 }

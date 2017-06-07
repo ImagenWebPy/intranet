@@ -9,7 +9,7 @@ $helper = new Helper();
     <head>
         <meta charset="utf-8">
         <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-        <title><?= SITE_TITLE; ?></title>
+        <title><?= SITE_TITLE . ' - ' . $this->title ?></title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -58,24 +58,18 @@ $helper = new Helper();
                         <div class="mb-content">
                             <nav>
                                 <ul id="mb-main-menu" class="gallety-filters menuHeader">
-                                    <li><a href="/">Inicio</a></li>
-                                    <?php foreach ($helper->getTiposEventos() as $item): ?>
-                                    <li><a href="#" data-filter="<?= utf8_encode($item['tag']); ?>"><?= utf8_encode($item['descripcion']); ?></a></li>
-                                    <?php endforeach; ?>
+                                    <li><a href="<?= URL; ?>">Inicio</a></li>
+                                    <?php if (empty($helper->getPage()[0])): ?>
+                                        <?php foreach ($helper->getTiposEventos() as $item): ?>
+                                            <li><a href="#" data-filter="<?= utf8_encode($item['tag']); ?>"><?= utf8_encode($item['descripcion']); ?></a></li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
                             </nav>
                         </div>
                         <div class="mb-footer">
                             <a class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
                             <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
-                            <div class="mb-social">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-instagram"></i></a>
-                                <a href=""><i class="fa fa-pinterest"></i></a>
-                                <a href=""><i class="fa fa-tumblr"></i></a>
-                            </div>
                             <div class="mb-copyright">
                                 <p>© 2017 Todos los Derechos Reservados</p>
                                 <p>Desarrollado por Marketing</p>

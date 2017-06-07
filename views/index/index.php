@@ -2,14 +2,7 @@
 $helper = new Helper();
 ?>
 <div id="main">
-    <div id="header-mobile" class="visible-xs">
-        <header>
-            <div class="m-header-body">
-                <img src="<?= URL; ?>public/assets/img/logo_white.png" class="logo img-responsive" alt="Logo Garden">
-                <p class="m-site-descr">Multipurpose Portfolio</p>
-            </div>
-        </header>
-    </div>
+    <?= $helper->mostrarMobileLogo(); ?>
     <div id="header" class="hd-filters">
         <header>
             <ul class="gallety-filters">
@@ -58,7 +51,7 @@ $helper = new Helper();
                                                 <?php
                                                 for ($i = 0; $i <= (count($archivos['imagenes']) - 1); $i++):
                                                     ?>
-                                                    <li data-target="#carousel-gallery-1" data-slide-to="<?= $i; ?>" class="active"></li>
+                                                    <li data-target="#carousel-gallery-1" data-slide-to="<?= $i; ?>"></li>
                                                 <?php endfor; ?>
                                             </ol>
                                             <!-- Controls -->
@@ -95,7 +88,7 @@ $helper = new Helper();
                                 <div class="col-sm-4 lg-preview-descr">
                                     <h4><?= utf8_encode($contenido['titulo']); ?></h4>
                                     <?= utf8_encode($contenido['contenido']); ?>
-                                    <button class="btn btn-primary glp-readmore">Leer màs</button>
+                                    <a href="<?= URL; ?>post/contenido/<?= $contenido['id'] . '/' . $this->helper->getPostTitle($contenido['id'])['url']; ?>" class="btn btn-primary glp-readmore linkWhite">Leer màs</a>
                                 </div>
                             </div>
                         </div> <!-- gl-preview -->
