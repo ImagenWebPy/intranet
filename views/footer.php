@@ -1,5 +1,5 @@
 </div> <!-- wrapper -->
-<script src="<?= URL; ?>public/assets/js/vendor/jquery-1.10.2.min.js"></script>
+
 <script src="<?= URL; ?>public/assets/js/vendor/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="<?= URL; ?>public/assets/js/vendor/jquery.touchSwipe.min.js"></script>
 
@@ -21,5 +21,23 @@
 
 <script src="<?= URL; ?>public/assets/js/plugins.js"></script>
 <script src="<?= URL; ?>public/assets/js/main.js"></script>
+<?php
+#cargamos los js de las vistas
+if (isset($this->external_js)) {
+    foreach ($this->external_js as $external) {
+        echo '<script async defer src="' . $external . '"></script>';
+    }
+}
+if (isset($this->public_js)) {
+    foreach ($this->public_js as $public_js) {
+        echo '<script type="text/javascript" src="' . URL . 'public/' . $public_js . '"></script>';
+    }
+}
+if (isset($this->js)) {
+    foreach ($this->js as $js) {
+        echo '<script type="text/javascript" src="' . URL . 'views/' . $js . '"></script>';
+    }
+}
+?>
 </body>
 </html>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-07 16:28:19
+Date: 2017-06-08 18:20:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -224,7 +224,7 @@ CREATE TABLE `usuario` (
   `contrasena` varchar(120) DEFAULT NULL,
   `nombre` varchar(45) NOT NULL DEFAULT '0',
   `apellido` varchar(45) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
   `imagen` varchar(160) DEFAULT NULL,
   `estado` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -234,4 +234,4 @@ CREATE TABLE `usuario` (
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES ('1', 'raul.ramirez@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', 'Raul', 'Ramirez', '1986-09-25', null, '1');
+INSERT INTO `usuario` VALUES ('1', 'raul.ramirez@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', 'Raul', 'Ramirez', null, null, '1');

@@ -31,10 +31,31 @@ $helper = new Helper();
         <link rel="icon" type="image/png" sizes="96x96" href="<?= URL; ?>public/assets/favicon/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="<?= URL; ?>public/assets/favicon/favicon-16x16.png">
         <link rel="manifest" href="<?= URL; ?>public/assets/favicon/manifest.json">
+        <?php
+        #cargamos los css de las vistas
+        if (isset($this->css)) {
+            foreach ($this->css as $css) {
+                echo '<link rel="stylesheet" href="' . URL . 'views/' . $css . '" type="text/css">';
+            }
+        }
+        if (isset($this->public_css)) {
+            foreach ($this->public_css as $public_css) {
+                echo '<link rel="stylesheet" href="' . URL . 'public/' . $public_css . '" type="text/css">';
+            }
+        }
+        ?>
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="<?= URL; ?>public/assets/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <script src="<?= URL; ?>public/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="<?= URL; ?>public/assets/js/vendor/jquery-1.10.2.min.js"></script>
+        <?php
+        if (isset($this->header_js)) {
+            foreach ($this->header_js as $header_js) {
+                echo '<script type="text/javascript" src="' . URL . 'public/' . $header_js . '"></script>';
+            }
+        }
+        ?>
     </head>
     <body class="menu-bar-opened menu-bar-ontop black-body">
         <script type="text/javascript">
@@ -68,7 +89,7 @@ $helper = new Helper();
                             </nav>
                         </div>
                         <div class="mb-footer">
-                            <a class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
+                            <a href="<?= URL; ?>/cuenta/micuenta" class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
                             <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
                             <div class="mb-copyright">
                                 <p>© 2017 Todos los Derechos Reservados</p>

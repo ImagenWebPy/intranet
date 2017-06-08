@@ -306,8 +306,8 @@ class Helper {
         $content = '<div id="header-mobile" class="visible-xs">
                         <header>
                             <div class="m-header-body">
-                                <img src="assets/img/logo_white.png" class="logo" alt="Logo">
-                                <p class="m-site-descr">Multipurpose Portfolio</p>
+                                <img src="' . URL . 'public/assets/img/logo-garden.png" class="logo" alt="Logo">
+                                <p class="m-site-descr">Hola ' . $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido'] . '</p>
                             </div>
                         </header>
                     </div>';
