@@ -18,4 +18,19 @@ class Cuenta_Model extends Model {
         return $data;
     }
 
+    public function modificarDatos($datos) {
+        $id_usuario = $_SESSION['usuario']['id'];
+        $this->db->update('usuario', $datos, "`id` = $id_usuario");
+    }
+
+    public function modificarContrasena($datos) {
+        if ($datos['pass1'] == $datos['pass2']) {
+            $id_usuario = $_SESSION['usuario']['id'];
+            $data = array(
+                'contrasena' => $datos['pass1']
+            );
+            $this->db->update('usuario', $datos, "`id` = $id_usuario");
+        }
+    }
+
 }

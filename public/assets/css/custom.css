@@ -1,3 +1,32 @@
+/**
+*FUENTES
+*/
+@font-face {
+    font-family: 'SourceSansPro-Regular';
+    src: url('public/fuentes/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'),  url('public/fuentes/SourceSansPro-Regular.otf')  format('opentype'),
+        url('public/fuentes/SourceSansPro-Regular.woff') format('woff'), url('public/fuentes/SourceSansPro-Regular.ttf')  format('truetype'), url('public/fuentes/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SourceSansPro-Bold';
+    src: url('public/fuentes/SourceSansPro-Bold.eot?#iefix') format('embedded-opentype'),  url('public/fuentes/SourceSansPro-Bold.otf')  format('opentype'),
+        url('public/fuentes/SourceSansPro-Bold.woff') format('woff'), url('public/fuentes/SourceSansPro-Bold.ttf')  format('truetype'), url('public/fuentes/SourceSansPro-Bold.svg#SourceSansPro-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oswald-Regular';
+    src: url('public/fuentes/Oswald-Regular.eot?#iefix') format('embedded-opentype'),  url('public/fuentes/Oswald-Regular.woff') format('woff'), url('public/fuentes/Oswald-Regular.ttf')  format('truetype'), url('public/fuentes/Oswald-Regular.svg#Oswald-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oswald-Bold';
+    src: url('public/fuentes/Oswald-Bold.eot?#iefix') format('embedded-opentype'),  url('public/fuentes/Oswald-Bold.woff') format('woff'), url('public/fuentes/Oswald-Bold.ttf')  format('truetype'), url('public/fuentes/Oswald-Bold.svg#Oswald-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 .centrarLogin{
     text-align: center;
     margin: 10px;
@@ -5,3 +34,6 @@
 .pointer { cursor: pointer;}
 .menuHeader li{ width: 100%;}
 .linkWhite { color: #fff;}
+.sourcePro {font-family: 'SourceSansPro-Bold';}
+.sourcePro:hover {font-family: 'SourceSansPro-Bold'; font-weight: bold;}
+ul.gallety-filters > li.active > a, ul.gallety-filters > li a:hover{font-family: 'SourceSansPro-Bold'; font-weight: bold;}

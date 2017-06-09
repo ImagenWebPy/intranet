@@ -30,6 +30,7 @@ $helper = new Helper();
         <link rel="icon" type="image/png" sizes="32x32" href="<?= URL; ?>public/assets/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="<?= URL; ?>public/assets/favicon/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="<?= URL; ?>public/assets/favicon/favicon-16x16.png">
+        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:r%7CSource+Sans+Pro:r,i,b,bi&amp;subset=latin,latin-ext,latin,latin-ext" media="all">-->
         <link rel="manifest" href="<?= URL; ?>public/assets/favicon/manifest.json">
         <?php
         #cargamos los css de las vistas
@@ -89,7 +90,7 @@ $helper = new Helper();
                             </nav>
                         </div>
                         <div class="mb-footer">
-                            <a href="<?= URL; ?>/cuenta/micuenta" class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
+                            <a href="<?= URL; ?>cuenta/micuenta" class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
                             <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
                             <div class="mb-copyright">
                                 <p>© 2017 Todos los Derechos Reservados</p>

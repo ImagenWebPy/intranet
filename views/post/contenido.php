@@ -64,7 +64,7 @@
             <div class="container container-800">
                 <article>
                     <h1 class="sp-title"><?= $this->postContent['titulo']; ?></h1>
-                    <p class="sp-info">Publicado es <time datetime="<?= $this->postContent['fecha']; ?>"><?= $this->postContent['fecha']; ?></time></p>
+                    <p class="sp-info">Publicado el <time datetime="<?= $this->postContent['fecha']; ?>"><?= $this->postContent['fecha']; ?></time></p>
                     <div class="sp-content">
                         <?= $this->postContent['contenido']; ?>
                     </div>

@@ -6,9 +6,9 @@ $helper = new Helper();
     <div id="header" class="hd-filters">
         <header>
             <ul class="gallety-filters">
-                <li class="active"><a data-filter="*" href="#">Todos</a></li>
+                <li class="active" class="sourcePro"><a data-filter="*" href="#" style="font-size: 12px;">Todos</a></li>
                 <?php foreach ($this->helper->listadoCategorias() as $categorias): ?>
-                    <li><a data-filter="<?= $categorias['tag']; ?>" href="#"><?= utf8_encode($categorias['descripcion']); ?></a></li>
+                    <li><a data-filter="<?= $categorias['tag']; ?>" href="#" class="sourcePro" style="font-size: 12px;"><?= utf8_encode($categorias['descripcion']); ?></a></li>
                 <?php endforeach; ?>
                 <li class="gf-underline"></li>
             </ul>
@@ -28,6 +28,11 @@ $helper = new Helper();
                                         </div></div>
                                 </figcaption>
                             </figure>
+                            <div class="titulosPost">
+                                <p class="tipoPost"></p>
+                                <p class="tituloPost"></p>
+                                <p class="fechaPost"></p>
+                            </div>
                         </a>
                         <div class="gl-preview" style="diplay:none;" data-category="<?= $helper->getTagsPost($contenido['id']); ?>">
                             <span class="glp-arrow"></span>
