@@ -44,7 +44,7 @@
                         }
                     }
                     ?>
-                    <div class="col-sm-10">
+                    <div class="col-md-12">
                         <div class="glp-video">
                             <video class="video-js vjs-default-skin vjs-mental-skin" width="100%" height="100%" controls preload="none"
                                    poster="<?= URL; ?>public/archivos/<?= $imgVideo ?>"
