@@ -21,7 +21,7 @@ switch ($host) {
         define('DB_NAME', 'intranet');
         break;
     default :
-        define('URL', 'http://192.168.90.195/intranet/');
+        define('URL', 'http://localhost/intranet/');
         define('DB_USER', 'root');
         define('DB_PASS', '');
         define('DB_NAME', 'intranet');

@@ -217,8 +217,12 @@ class Helper {
         $contenido = $this->db->select("SELECT  p.id,
                                                 p.titulo,
                                                 p.contenido,
-                                                (select pa.descripcion from post_archivo pa where pa.id_post = p.id and pa.img_principal = 1 and pa.estado = 1 and pa.id_tipo_archivo = 1) as img
+                                                (select pa.descripcion from post_archivo pa where pa.id_post = p.id and pa.img_principal = 1 and pa.estado = 1 and pa.id_tipo_archivo = 1) as img,
+                                                te.descripcion as evento,
+                                                p.fecha
                                         FROM post p
+                                        LEFT JOIN post_tipo pt on pt.id_post = p.id
+                                        LEFT JOIN tipo_evento te on te.id = pt.id_tipo_evento
                                         where p.estado = 1
                                         ORDER BY p.fecha DESC
                                         LIMIT 20");
@@ -312,6 +316,45 @@ class Helper {
                         </header>
                     </div>';
         return $content;
+    }
+
+    public function mesEspanol($month) {
+        switch (strtolower($month)) {
+            case 'january':
+                $mes = 'Enero';
+                break;
+            case 'february  ':
+                $mes = 'Febrero';
+                break;
+            case 'march':
+                $mes = 'Marzo';
+                break;
+            case 'april':
+                $mes = 'Abril';
+                break;
+            case 'may':
+                $mes = 'Mayo';
+                break;
+            case 'june':
+                $mes = 'Junio';
+                break;
+            case 'july':
+                $mes = 'Julio';
+                break;
+            case 'september':
+                $mes = 'Septiembre';
+                break;
+            case 'october':
+                $mes = 'Octubre';
+                break;
+            case 'november':
+                $mes = 'Noviembre';
+                break;
+            case 'december':
+                $mes = 'Diciembre';
+                break;
+        }
+        return $mes;
     }
 
 }

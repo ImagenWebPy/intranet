@@ -6,7 +6,7 @@ $helper = new Helper();
     <div id="header" class="hd-filters">
         <header>
             <ul class="gallety-filters">
-                <li class="active" class="sourcePro"><a data-filter="*" href="#" style="font-size: 12px;">Todos</a></li>
+                <li class="active sourcePro"><a data-filter="*" href="#" style="font-size: 12px;">Todos</a></li>
                 <?php foreach ($this->helper->listadoCategorias() as $categorias): ?>
                     <li><a data-filter="<?= $categorias['tag']; ?>" href="#" class="sourcePro" style="font-size: 12px;"><?= utf8_encode($categorias['descripcion']); ?></a></li>
                 <?php endforeach; ?>
@@ -27,11 +27,12 @@ $helper = new Helper();
                                             <p class="gl-item-title"><?= utf8_encode($contenido['titulo']); ?></p>
                                         </div></div>
                                 </figcaption>
+
                             </figure>
-                            <div class="titulosPost">
-                                <p class="tipoPost"></p>
-                                <p class="tituloPost"></p>
-                                <p class="fechaPost"></p>
+                            <div class="divTitulosPost">
+                                <p class="tipoEvento"><?= utf8_encode($contenido['evento']); ?></p>
+                                <p class="tituloPost"><?= (strlen($contenido['titulo']) > 35) ? substr(utf8_encode($contenido['titulo']), 0, 35) . '...' : utf8_encode($contenido['titulo']) ?></p>
+                                <p class="fechaPost"><?= $helper->mesEspanol(date('F', strtotime($contenido['fecha']))) . '-' . date('Y', strtotime($contenido['fecha'])); ?></p>
                             </div>
                         </a>
                         <div class="gl-preview" style="diplay:none;" data-category="<?= $helper->getTagsPost($contenido['id']); ?>">
@@ -112,4 +113,10 @@ $helper = new Helper();
     </div>
 
 </div> <!-- main -->
-
+<script type="text/javascript">
+    $('.gl-item').hover(function () {
+        $(this).find('.divTitulosPost:first').hide()
+    }, function () {
+        $(this).find('.divTitulosPost:first').show();
+    });
+</script>
