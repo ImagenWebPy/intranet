@@ -79,7 +79,7 @@ $helper = new Helper();
                         </div>
                         <div class="mb-content">
                             <nav>
-                                <ul id="mb-main-menu" class="gallety-filters menuHeader">
+                                <ul id="mb-main-menu SourceSansPro-Regular" class="gallety-filters menuHeader">
                                     <li><a href="<?= URL; ?>">Inicio</a></li>
                                     <?php if (empty($helper->getPage()[0])): ?>
                                         <?php foreach ($helper->getTiposEventos() as $item): ?>

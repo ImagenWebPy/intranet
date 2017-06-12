@@ -32,12 +32,17 @@
     margin: 10px;
 }
 .pointer { cursor: pointer;}
+.menuHeader { line-height: 10px;}
 .menuHeader li{ width: 100%;}
 .linkWhite { color: #fff;}
 .sourcePro {font-family: 'SourceSansPro-Bold';}
+.SourceSansPro-Regular {font-family: 'SourceSansPro-Regular';}
+.Oswald-Regular {font-family: 'Oswald-Regular';}
+.Oswald {font-family: 'Oswald-Bold';}
 .sourcePro:hover {font-family: 'SourceSansPro-Bold'; font-weight: bold;}
 ul.gallety-filters > li.active > a, ul.gallety-filters > li a:hover{font-family: 'SourceSansPro-Bold'; font-weight: bold;}
 .divTitulosPost{position: absolute; top: 150px; padding: 5px; font-size: 11px;}
 .divTitulosPost .tipoEvento{color: #fff !important; font-family: 'Oswald-Bold'; text-transform: uppercase; font-weight: bold; line-height: 0px; margin-top: 5px; font-size: 10px;}
 .divTitulosPost .tituloPost{color: #fff !important; font-family: 'Oswald-Bold'; text-transform: uppercase; font-weight: bold; line-height: 15px; font-size: 18px;}
 .divTitulosPost .fechaPost{color: #fff !important; font-family: 'Oswald-Regular'; text-transform: uppercase; font-weight: bold; line-height: 5px; font-size: 9px;}
+.menuLineHeight {line-height: 10px;}

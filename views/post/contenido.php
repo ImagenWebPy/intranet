@@ -3,7 +3,7 @@
     <?= $helper->mostrarMobileLogo(); ?>
     <div id="header">
         <header>
-            <h1><?= $this->postContent['titulo']; ?></h1>
+            <h1 class="sourcePro"><?= $this->postContent['titulo']; ?></h1>
         </header>
     </div>
     <div class="section">
@@ -63,16 +63,16 @@
         <section>
             <div class="container container-800">
                 <article>
-                    <h1 class="sp-title"><?= $this->postContent['titulo']; ?></h1>
-                    <p class="sp-info">Publicado el <time datetime="<?= $this->postContent['fecha']; ?>"><?= $this->postContent['fecha']; ?></time></p>
-                    <div class="sp-content">
+                    <h1 class="sp-title sourcePro"><?= $this->postContent['titulo']; ?></h1>
+                    <p class="sp-info SourceSansPro-Regular">Publicado el <time datetime="<?= $this->postContent['fecha']; ?>"><?= $this->postContent['fecha']; ?></time></p>
+                    <div class="sp-content SourceSansPro-Regular">
                         <?= $this->postContent['contenido']; ?>
                     </div>
                     <div class="sp-footer">
                         <footer>
                             <div class="row">
                                 <div class="col col-sm-8">
-                                    <span class="sp-tags-title">TAGS</span><span class="sp-tags"><?= $this->postContent['tags']; ?></span>
+                                    <span class="sp-tags-title Oswald-Regular">TAGS</span><span class="sp-tags Oswald"><?= $this->postContent['tags']; ?></span>
                                 </div>
                             </div>
                         </footer>
