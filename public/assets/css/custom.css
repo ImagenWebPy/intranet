@@ -46,3 +46,10 @@ ul.gallety-filters > li.active > a, ul.gallety-filters > li a:hover{font-family:
 .divTitulosPost .tituloPost{color: #fff !important; font-family: 'Oswald-Bold'; text-transform: uppercase; font-weight: bold; line-height: 15px; font-size: 18px;}
 .divTitulosPost .fechaPost{color: #fff !important; font-family: 'Oswald-Regular'; text-transform: uppercase; font-weight: bold; line-height: 5px; font-size: 9px;}
 .menuLineHeight {line-height: 10px;}
+/***************
+***RESPONSIVE**
+***************/
+/* For Screen Higher than 1400px */ 
+@media screen and (min-width: 1401px){
+    .divTitulosPost{top: 255px;}
+} 

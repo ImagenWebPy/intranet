@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-08 18:20:59
+Date: 2017-06-22 17:52:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(145) DEFAULT NULL,
+  `estado` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'Raul Ramirez', 'raul.ramirez@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
 
 -- ----------------------------
 -- Table structure for `categoria`
@@ -56,7 +74,7 @@ CREATE TABLE `post` (
   `fecha` datetime DEFAULT NULL,
   `estado` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
@@ -68,6 +86,7 @@ INSERT INTO `post` VALUES ('4', 'DAYTRIP/VAPORCUÉ', null, 'daytrip,vapor cue, e
 INSERT INTO `post` VALUES ('5', 'Inter Run 2017', '<p>El Jeep Renegade presente en el Inter Run 2017. Felicitaciones a todos los participantes!!</p>', 'jeep,renegade,inter,run,2017', '2017-05-14 17:26:41', '1');
 INSERT INTO `post` VALUES ('6', 'Lanzamiento Jeep Renegade', null, 'jeep,renegade,lanzamiento', '2016-06-08 18:11:10', '1');
 INSERT INTO `post` VALUES ('7', 'World Premiere de la Nueva Jeep® Compass 2017!', null, 'jeep,compass,lanzamiento', '2016-11-16 18:20:51', '1');
+INSERT INTO `post` VALUES ('8', 'Desembarco oficial de Jack Daniel\'s', '<p>Resumen de la fantástica noche que vivimos ayer en el desembarco oficial de Jack Daniel\'s al país. Una fiesta a la que Jeep, no podia faltar.</p>', 'jeep,jacks daniels,jack\'s daniels,desembarco,oficial', '2017-06-08 15:07:27', '1');
 
 -- ----------------------------
 -- Table structure for `post_archivo`
@@ -85,7 +104,7 @@ CREATE TABLE `post_archivo` (
   KEY `fk_idtipoarchivo_pa` (`id_tipo_archivo`),
   CONSTRAINT `fk_idpost_pa` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idtipoarchivo_pa` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `post_archivo` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_archivo
@@ -121,6 +140,8 @@ INSERT INTO `post_archivo` VALUES ('28', '6', '1', 'lanzamiento_renegade_2016.jp
 INSERT INTO `post_archivo` VALUES ('29', '6', '2', 'lanzamiento_renegade_2016.mp4', '0', '1');
 INSERT INTO `post_archivo` VALUES ('30', '7', '1', 'lanzamiento_compass_2016.jpg', '1', '1');
 INSERT INTO `post_archivo` VALUES ('31', '7', '2', 'lanzamiento_compass_2016.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('32', '8', '2', 'lanzamiento_jackdaniels_jeep.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('33', '8', '1', 'lanzamiento_jeep_jackdaniels.jpg', '1', '1');
 
 -- ----------------------------
 -- Table structure for `post_categoria`
@@ -135,7 +156,7 @@ CREATE TABLE `post_categoria` (
   KEY `fk_idcategoria_pc` (`id_categoria`),
   CONSTRAINT `fk_idcategoria_pc` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idpost_pc` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_categoria
@@ -147,6 +168,7 @@ INSERT INTO `post_categoria` VALUES ('4', '4', '4');
 INSERT INTO `post_categoria` VALUES ('5', '5', '6');
 INSERT INTO `post_categoria` VALUES ('6', '6', '6');
 INSERT INTO `post_categoria` VALUES ('7', '7', '6');
+INSERT INTO `post_categoria` VALUES ('8', '8', '6');
 
 -- ----------------------------
 -- Table structure for `post_tipo`
@@ -161,7 +183,7 @@ CREATE TABLE `post_tipo` (
   KEY `fk_id_tipopost_pt` (`id_tipo_evento`),
   CONSTRAINT `fk_id_post_pt` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_id_tipopost_pt` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_tipo
@@ -173,6 +195,7 @@ INSERT INTO `post_tipo` VALUES ('4', '4', '2');
 INSERT INTO `post_tipo` VALUES ('5', '5', '2');
 INSERT INTO `post_tipo` VALUES ('6', '6', '1');
 INSERT INTO `post_tipo` VALUES ('7', '7', '1');
+INSERT INTO `post_tipo` VALUES ('8', '8', '1');
 
 -- ----------------------------
 -- Table structure for `tipo_archivo`
