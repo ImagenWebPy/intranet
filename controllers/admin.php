@@ -63,4 +63,13 @@ class Admin extends Controller {
         echo $data;
     }
 
+    public function mostrarModalEditar() {
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['post'])
+        );
+        header('Content-type: application/json; charset=utf-8');
+        $datos = $this->model->mostrarModalEditar($data);
+        echo $datos;
+    }
+
 }

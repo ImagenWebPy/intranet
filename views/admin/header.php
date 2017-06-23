@@ -29,7 +29,8 @@
         <link rel="stylesheet" href="<?= URL; ?>public/plugins/daterangepicker/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?= URL; ?>public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+        <!-- TAG INPUTS -->
+        <link rel="stylesheet" href="<?= URL; ?>public/assets/css/jquery.tagsinput.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -37,6 +38,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script src="<?= URL; ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="<?= URL; ?>public/plugins/jQuery/jquery.tagsinput.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

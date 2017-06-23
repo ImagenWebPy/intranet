@@ -385,4 +385,14 @@ class Helper {
         return true;
     }
 
+    public function getCategorias() {
+        $sql = $this->db->select("select * from categoria");
+        return $sql;
+    }
+
+    public function getTipoEventos() {
+        $sql = $this->db->select("select * from tipo_evento");
+        return $sql;
+    }
+
 }
