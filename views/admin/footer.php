@@ -30,8 +30,8 @@
 <!-- DataTables -->
 <script src="<?= URL; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= URL; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="<?= URL; ?>public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- CK Editor -->
+<script src="<?= URL; ?>public/plugins/ckeditor/ckeditor.js"></script>
 <!-- Slimscroll -->
 <script src="<?= URL; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->

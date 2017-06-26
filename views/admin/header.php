@@ -38,7 +38,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script src="<?= URL; ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <script src="<?= URL; ?>public/plugins/jQuery/jquery.tagsinput.js"></script>
+        <script src="<?= URL; ?>public/assets/js/jquery.tagsinput.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

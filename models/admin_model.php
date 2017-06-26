@@ -151,6 +151,19 @@ class Admin_Model extends Model {
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label>Tags</label>
+                                      <input type="text" class="form-control" id="tags" placeholder="Ingrese los tags separados por comas(,)" value="' . utf8_encode($sql[0]['tags']) . '">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-body pad">
+                                        <form>
+                                              <textarea id="contenido" name="contenido" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                                        </form>
+                                  </div>
+                                </div>
                             </form>
                         </div>
                         <!-- /.box-body -->
@@ -159,6 +172,10 @@ class Admin_Model extends Model {
                         $(".datepicker").datepicker({
                             format: "dd-mm-yyyy",
                             autoclose: true
+                        });
+                        $("#tags").tagsInput();
+                        CKEDITOR.replace("contenido", {
+                            extraPlugins: "imageuploader"
                         });
                       </script>';
         $datos = array(
