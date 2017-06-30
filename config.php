@@ -38,9 +38,9 @@ define('DB_HOST', 'localhost');
 define('HASH_PASSWORD_KEY', '!@123456789ABCDEFGHIJKLMNOPRSTWYZ[¿]{?}<->');
 
 // Constantes varias
-define('SITE_TITLE', 'Garden Intranet :: ');
-define('TITLE_ADMIN', 'Intranet Admin :: ');
-define('IMAGES', URL . 'public/images/');
+define('SITE_TITLE', 'Garden Institucional :: ');
+define('TITLE_ADMIN', 'Institucional Admin :: ');
+define('ARCHIVOS', URL . 'public/archivos/');
 define('CANT_REG_PAGINA', 20);
 define('PASS_REGENERAR', 'garden2017');
 

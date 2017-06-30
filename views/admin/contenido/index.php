@@ -22,7 +22,7 @@
                 <table id="listadoPosteos" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th class="text-center">Fecha Publicación</th>
+                            <th class="text-center">Fecha Evento</th>
                             <th class="text-center">Título</th>
                             <th class="text-center">Categoría</th>
                             <th class="text-center">Tipo Contenido</th>
@@ -35,7 +35,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th class="text-center">Fecha Publicación</th>
+                            <th class="text-center">Fecha Evento</th>
                             <th class="text-center">Título</th>
                             <th class="text-center">Categoría</th>
                             <th class="text-center">Tipo Contenido</th>
@@ -111,6 +111,47 @@
                 }); //END AJAX
             }
             e.handled = true;
+        });
+        //GUARDAR CAMBIOS POST
+        $(document).on("click", ".btnGuardarCambios", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                e.preventDefault();
+                var form = new FormData($('.frmModificarPost')[0]);
+                var titulo = $("input[name='titulo']");
+                var fecha = $("input[name='fecha']");
+                var categoria = $("input[name='categoria']");
+                var tipo_evento = $("input[name='tipo_evento']");
+                var tags = $("input[name='tags']");
+                var contenido = $("input[name='contenido']");
+                if (titulo.val().trim().length == 0) {
+                    titulo.css("border", "2px solid red");
+                } else {
+                    titulo.css("border", "1px solid #d2d6de");
+                }
+                if (fecha.val().trim().length == 0) {
+                    fecha.css("border", "2px solid red");
+                } else {
+                    fecha.css("border", "1px solid #d2d6de");
+                }
+                if (tags.val().trim().length == 0) {
+                    tags.css("border", "2px solid red");
+                } else {
+                    tags.css("border", "1px solid #d2d6de");
+                }
+                if (titulo.val().trim().length > 0 && fecha.val().trim().length > 0 && tags.val().trim().length > 0) {
+                    $('.frmModificarPost').append("<input type='hidden' name='tags2' value='" + tags.val() + "' />");
+                    $(".frmModificarPost").submit();
+                }
+            }
+            e.handled = true;
+        });
+        //GUARDAR CAMBIOS POST
+        $(document).on("click", ".btnAddImagen", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                $(".divSubir").toggle();
+            }
         });
     });
 </script>

@@ -72,4 +72,58 @@ class Admin extends Controller {
         echo $datos;
     }
 
+    public function guardarDatosPost() {
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['id']),
+            'titulo' => $this->helper->cleanInput($_POST['titulo']),
+            'fecha' => $this->helper->cleanInput($_POST['fecha']),
+            'categoria' => $this->helper->cleanInput($_POST['categoria']),
+            'tipo_evento' => $this->helper->cleanInput($_POST['tipo_evento']),
+            'estado' => $this->helper->cleanInput($_POST['estado']),
+            'tags2' => $this->helper->cleanInput($_POST['tags2']),
+            'contenido' => $this->helper->cleanInput($_POST['contenido'])
+        );
+        $this->model->guardarDatosPost($data);
+        header('Location: ' . URL . 'admin/contenido');
+    }
+
+    public function uploadImage() {
+        if (!empty($_POST)) {
+            $idPost = $_POST['data']['id'];
+            $error = false;
+            $absolutedir = dirname(__FILE__);
+            $dir = 'public/archivos/';
+            $serverdir = $dir;
+            $tmp = explode(',', $_POST['file']);
+            $file = base64_decode($tmp[1]);
+            $ext = explode('.', $_POST['filename']);
+            $extension = strtolower(end($ext));
+            $name = $_POST['name'];
+            $filename = $name . '.' . $extension;
+            //$filename				= $file.'.'.substr(sha1(time()),0,6).'.'.$extension;
+
+            $handle = fopen($serverdir . $filename, 'w');
+            fwrite($handle, $file);
+            fclose($handle);
+
+            header('Content-type: application/json; charset=utf-8');
+            $data = array(
+                'id' => $idPost,
+                'archivo' => $filename
+            );
+            $response = $this->model->uploadImage($data);
+            echo json_encode($response);
+
+            //echo json_encode(array('result'=>true));
+        } else {
+            $filename = basename($_SERVER['QUERY_STRING']);
+            $file_url = '/public/archivos/' . $filename;
+            header('Content-Type: 				application/octet-stream');
+            header("Content-Transfer-Encoding: 	Binary");
+            header("Content-disposition: 		attachment; filename=\"" . basename($file_url) . "\"");
+            readfile($file_url);
+            exit();
+        }
+    }
+
 }
