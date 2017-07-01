@@ -283,4 +283,72 @@ class Admin_Model extends Model {
         return $datos;
     }
 
+    public function mostrarImgBtn($data) {
+        $id = $data['id'];
+        $image = $this->helper->getImage($id);
+        if ($image[0]['estado'] == 1) {
+            $updateEstado = array(
+                'estado' => 0
+            );
+            $labelBg = 'danger';
+            $labelText = 'Oculta';
+        } else {
+            $updateEstado = array(
+                'estado' => 1
+            );
+            $labelBg = 'success';
+            $labelText = 'Visible';
+        }
+        $btn = '';
+        if ($image[0]['img_principal'] != 1) {
+            $this->db->update('post_archivo', $updateEstado, "`id` = $id");
+            $btn = '<span class="label label-' . $labelBg . '">' . $labelText . '</span>';
+        } else {
+            $btn = '<span class="label label-success">Visible</span>';
+        }
+        $datos = array(
+            'id' => $id,
+            'content' => $btn
+        );
+        return $datos;
+    }
+
+    public function imgPrincipal($data) {
+        $id = $data['id'];
+        $imgActual = $this->helper->getImage($id);
+        $idPost = $imgActual[0]['id_post'];
+        $oldPrincipal = $this->db->select("select id from post_archivo where id_post = $idPost and img_principal = 1");
+        $idOld = $oldPrincipal[0]['id'];
+        if ($imgActual[0]['img_principal'] == 1) {
+            $updatePrincipal = array(
+                'img_principal' => 0
+            );
+        } else {
+            $updatePrincipal = array(
+                'img_principal' => 1
+            );
+        }
+        $updatePrincipalOld = array(
+            'img_principal' => 0
+        );
+        $btn = '<span class="label label-success">Principal</span>';
+        $btnOld = '<span class="label label-warning">Principal</span>';
+        if ($imgActual[0]['estado'] != 0) {
+            $this->db->update('post_archivo', $updatePrincipal, "`id` = $id");
+            $this->db->update('post_archivo', $updatePrincipalOld, "`id` = $idOld");
+            $datos = array(
+                'result' => true,
+                'id' => $id,
+                'content' => $btn,
+                'id_old' => $idOld,
+                'content_old' => $btnOld
+            );
+        } else {
+            $datos = array(
+                'result' => false
+            );
+        }
+        return $datos;
+    }
+
 }

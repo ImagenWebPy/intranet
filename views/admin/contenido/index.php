@@ -153,5 +153,44 @@
                 $(".divSubir").toggle();
             }
         });
+        //BTN MOSTRAR IMG
+        $(document).on("click", ".btnMostrarImg", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: "<?= URL; ?>admin/mostrarImgBtn",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        $('#mostrarImg' + data.id).html(data.content);
+                    }
+                }); //END AJAX
+            }
+        });
+        //BTN IMG PRINCIPAL
+        $(document).on("click", ".btnImgPrincipal", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: "<?= URL; ?>admin/imgPrincipal",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        if (data.result != false) {
+                            $('#imgPrincipal' + data.id).html(data.content);
+                            $('#imgPrincipal' + data.id_old).html(data.content_old);
+                        }
+                    }
+                }); //END AJAX
+            }
+        });
     });
 </script>

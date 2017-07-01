@@ -418,19 +418,19 @@ class Helper {
         foreach ($imagenes as $item) {
             $id = $item['id'];
             if ($item['img_principal'] == 1) {
-                $img_principal = '<a class="pointer" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-success">Principal</span></a>';
+                $img_principal = '<a class="pointer btnImgPrincipal" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-success">Principal</span></a>';
                 $imgPrincipal = utf8_encode($item['descripcion']);
             } else {
-                $img_principal = '<a class="pointer" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-warning">Principal</span></a>';
+                $img_principal = '<a class="pointer btnImgPrincipal" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-warning">Principal</span></a>';
             }
             if ($item['estado'] == 1) {
-                $mostrar = '<a class="pointer" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-success">Visible</span></a>';
+                $mostrar = '<a class="pointer btnMostrarImg" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-success">Visible</span></a>';
             } else {
-                $mostrar = '<a class="pointer" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-danger">Oculta</span></a>';
+                $mostrar = '<a class="pointer btnMostrarImg" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-danger">Oculta</span></a>';
             }
             $contenido .= '     <div class="col-sm-3" id="imagenGaleria' . $id . '">
                                     <img class="img-responsive" src="' . ARCHIVOS . utf8_encode($item['descripcion']) . '" alt="Photo">
-                                    <p>' . $img_principal . ' | ' . $mostrar . ' | <a class="pointer" data-id="' . $id . '" id="eliminarImg' . $id . '"><span class="label label-danger">Eliminar</span></a></p>
+                                    <p>' . $img_principal . ' | ' . $mostrar . ' | <a class="pointer btnEliminarImg" data-id="' . $id . '" id="eliminarImg' . $id . '"><span class="label label-danger">Eliminar</span></a></p>
                                 </div>
                                 <!-- /.col -->';
         }
@@ -438,20 +438,26 @@ class Helper {
     }
 
     public function loadImage($id) {
-        $item = $this->db->select("select pa.descripcion,
-                                        pa.img_principal,
-                                        pa.estado
-                                from post_archivo pa 
-                                where pa.id = $id");
+        $item = $this->getImage($id);
         $id = $item[0]['id'];
-        $img_principal = '<a class="pointer" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-warning">Principal</span></a>';
-        $mostrar = '<a class="pointer" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-success">Visible</span></a>';
+        $img_principal = '<a class="pointer btnImgPrincipal" id="imgPrincipal' . $id . '" data-id="' . $id . '"><span class="label label-warning">Principal</span></a>';
+        $mostrar = '<a class="pointer btnMostrarImg" id="mostrarImg' . $id . '" data-id="' . $id . '"><span class="label label-success">Visible</span></a>';
         $contenido = '<div class="col-sm-3" id="imagenGaleria' . $id . '">
                         <img class="img-responsive" src="' . ARCHIVOS . utf8_encode($item[0]['descripcion']) . '" alt="Photo">
-                        <p>' . $img_principal . ' | ' . $mostrar . ' | <a class="pointer" data-id="' . $id . '" id="eliminarImg' . $id . '"><span class="label label-danger">Eliminar</span></a></p>
+                        <p>' . $img_principal . ' | ' . $mostrar . ' | <a class="pointer btnEliminarImg" data-id="' . $id . '" id="eliminarImg' . $id . '"><span class="label label-danger">Eliminar</span></a></p>
                       </div>
                       <!-- /.col -->';
         return $contenido;
+    }
+
+    public function getImage($id) {
+        $item = $this->db->select("select pa.descripcion,
+                                        pa.img_principal,
+                                        pa.estado,
+                                        pa.id_post
+                                from post_archivo pa 
+                                where pa.id = $id");
+        return $item;
     }
 
 }

@@ -20,6 +20,12 @@ switch ($host) {
         define('DB_PASS', '2544386');
         define('DB_NAME', 'intranet');
         break;
+    case 'localhost':
+        define('URL', 'http://localhost/institucional/');
+        define('DB_USER', 'root');
+        define('DB_PASS', '');
+        define('DB_NAME', 'intranet');
+        break;
     default :
         define('URL', 'http://192.168.90.195/institucional/');
         define('DB_USER', 'root');

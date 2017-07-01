@@ -126,4 +126,22 @@ class Admin extends Controller {
         }
     }
 
+    public function mostrarImgBtn() {
+        header('Content-type: application/json; charset=utf-8');
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['id'])
+        );
+        $datos = $this->model->mostrarImgBtn($data);
+        echo json_encode($datos);
+    }
+    
+    public function imgPrincipal() {
+        header('Content-type: application/json; charset=utf-8');
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['id'])
+        );
+        $datos = $this->model->imgPrincipal($data);
+        echo json_encode($datos);
+    }
+
 }
