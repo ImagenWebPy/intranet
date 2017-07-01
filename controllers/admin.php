@@ -143,5 +143,14 @@ class Admin extends Controller {
         $datos = $this->model->imgPrincipal($data);
         echo json_encode($datos);
     }
+    
+    public function eliminarIMG() {
+        header('Content-type: application/json; charset=utf-8');
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['id'])
+        );
+        $datos = $this->model->eliminarIMG($data);
+        echo json_encode($datos);
+    }
 
 }

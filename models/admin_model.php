@@ -206,7 +206,25 @@ class Admin_Model extends Model {
                           <h3 class="box-title">Video</h3>
                         </div>
                         <div class="box-body">
-                            <div class="row">';
+                            <div class="row" style="margin: 20px;">
+                                <div class="col-md-12" style="margin:10px;">
+                                    <button type="button" class="btn btn-primary pull-right btnAddVideo"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Video</button>
+                                </div>
+                                <div class="col-md-12 divSubirVideo" style="display:none;">
+                                    <div class="html5fileupload demo_video" data-multiple="false" data-url="' . URL . 'admin/uploadVideo" data-valid-extensions="mp4" style="width: 100%;">
+                                        <input type="file" name="file" />
+                                    </div>
+                                    <script>
+                                        $(".html5fileupload.demo_video").html5fileupload({
+                                            data:{id:' . $id . '},
+                                            onAfterStartSuccess: function(response) {
+                                                $("#postImagenes" + response.id).append(response.content);
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="row" id="postVideo' . $id . '">';
         if (!empty($video[0])) {
             $videos = $this->helper->getArchivosPOst($id);
             $imgVideo = '';
@@ -342,6 +360,29 @@ class Admin_Model extends Model {
                 'content' => $btn,
                 'id_old' => $idOld,
                 'content_old' => $btnOld
+            );
+        } else {
+            $datos = array(
+                'result' => false
+            );
+        }
+        return $datos;
+    }
+
+    public function eliminarIMG($data) {
+        $id = $data['id'];
+        $imgActual = $this->helper->getImage($id);
+        if ($imgActual[0]['img_principal'] != 1) {
+            #Eliminamos la imagen del servidor
+            unlink('public/archivos/' . $imgActual[0]['descripcion']);
+            #Elimamos de la BD
+            $sth = $this->db->prepare("delete from post_archivo where id = :id");
+            $sth->execute(array(
+                ':id' => $id
+            ));
+            $datos = array(
+                'result' => true,
+                'id' => $id
             );
         } else {
             $datos = array(

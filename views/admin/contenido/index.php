@@ -152,6 +152,7 @@
             {
                 $(".divSubir").toggle();
             }
+            e.handled = true;
         });
         //BTN MOSTRAR IMG
         $(document).on("click", ".btnMostrarImg", function (e) {
@@ -170,6 +171,7 @@
                     }
                 }); //END AJAX
             }
+            e.handled = true;
         });
         //BTN IMG PRINCIPAL
         $(document).on("click", ".btnImgPrincipal", function (e) {
@@ -191,6 +193,28 @@
                     }
                 }); //END AJAX
             }
+            e.handled = true;
+        });
+        //BTN ELIMINAR IMG
+        $(document).on("click", ".btnEliminarImg", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                var id = $(this).attr("data-id");
+                $.ajax({
+                    url: "<?= URL; ?>admin/eliminarIMG",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        if (data.result != false) {
+                            $("#imagenGaleria" + data.id).remove();
+                        }
+                    }
+                }); //END AJAX
+            }
+            e.handled = true;
         });
     });
 </script>

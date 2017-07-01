@@ -451,7 +451,8 @@ class Helper {
     }
 
     public function getImage($id) {
-        $item = $this->db->select("select pa.descripcion,
+        $item = $this->db->select("select pa.id, 
+                                        pa.descripcion,
                                         pa.img_principal,
                                         pa.estado,
                                         pa.id_post
