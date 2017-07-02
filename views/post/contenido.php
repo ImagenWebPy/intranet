@@ -55,6 +55,7 @@
                             </video>
                         </div>
                     </div>
+
                 <?php endif; ?>
             </div>
         </section>
@@ -68,6 +69,35 @@
                     <div class="sp-content SourceSansPro-Regular">
                         <?= $this->postContent['contenido']; ?>
                     </div>
+                    <?php if ($this->postArchivos['tipo'] == 'video'): ?>
+                        <?php if (count($this->postArchivos['imagenes']) > 1): ?>
+                            <div id="carousel-single-post" class="carousel slide" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <?php foreach ($this->postArchivos['imagenes'] as $item): ?>
+                                        <div class="item <?= ($item['principal'] == 1) ? 'active' : ''; ?>">
+                                            <img src="<?= URL; ?>public/archivos/<?= $item['imagen']; ?>" alt="slide">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <?php
+                                    for ($i = 0; $i <= (count($this->postArchivos['imagenes']) - 1); $i++):
+                                        ?>
+                                        <li data-target="#carousel-single-post" data-slide-to="<?= $i; ?>"></li>
+                                    <?php endfor; ?>
+                                </ol>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-single-post" data-slide="prev">
+                                    <span></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-single-post" data-slide="next">
+                                    <span></span>
+                                </a>
+                            </div> <!-- carousel -->
+                        <?php endif; ?>
+                    <?php endif; ?>
                     <div class="sp-footer">
                         <footer>
                             <div class="row">
@@ -79,6 +109,7 @@
                     </div>
                 </article>
             </div> <!-- container -->
+
         </section>
     </div> <!-- section -->
     <div id="footer" class="ft-single-post">

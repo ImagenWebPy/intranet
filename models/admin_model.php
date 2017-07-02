@@ -181,7 +181,14 @@ class Admin_Model extends Model {
                                     <button type="button" class="btn btn-primary pull-right btnAddImagen"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Imagen</button>
                                 </div>
                                 <div class="col-md-12 divSubir" style="display:none;">
-                                    <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-valid-extensions="jpg,png,jpeg,gif" style="width: 100%;">
+                                    <div class="col-md-12">
+                                        <div class="alert alert-warning alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                            Solo se permiten imagenes <strong>.jpg,.png</strong>. Tamaño máximo <strong>512KB</strong>
+                                         </div>
+                                    </div>
+                                    <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%;">
                                         <input type="file" name="file" />
                                     </div>
                                     <script>
@@ -211,14 +218,22 @@ class Admin_Model extends Model {
                                     <button type="button" class="btn btn-primary pull-right btnAddVideo"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Video</button>
                                 </div>
                                 <div class="col-md-12 divSubirVideo" style="display:none;">
-                                    <div class="html5fileupload demo_video" data-multiple="false" data-url="' . URL . 'admin/uploadVideo" data-valid-extensions="mp4" style="width: 100%;">
+                                    <div class="col-md-12">
+                                        <div class="alert alert-warning alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                            Solo se puede subir un video con extension <strong>.mp4</strong>. Al subir otro, el anterior sera re-emplazado. Tamaño máximo <strong>40MB</strong>
+                                         </div>
+                                    </div>
+                                    <div class="html5fileupload demo_video" data-multiple="false" data-url="' . URL . 'admin/uploadVideo" data-max-filesize="40960000" style="width: 100%;">
                                         <input type="file" name="file" />
                                     </div>
                                     <script>
                                         $(".html5fileupload.demo_video").html5fileupload({
                                             data:{id:' . $id . '},
                                             onAfterStartSuccess: function(response) {
-                                                $("#postImagenes" + response.id).append(response.content);
+                                                $("#postVideo" + response.id).html("");
+                                                $("#postVideo" + response.id).append(response.content);
                                             }
                                         });
                                     </script>
@@ -226,18 +241,7 @@ class Admin_Model extends Model {
                             </div>
                             <div class="row" id="postVideo' . $id . '">';
         if (!empty($video[0])) {
-            $videos = $this->helper->getArchivosPOst($id);
-            $imgVideo = '';
-            foreach ($videos['imagenes'] as $item) {
-                if ($item['principal'] == 1) {
-                    $imgVideo = utf8_encode($item['imagen']);
-                }
-            }
-            $contenido .= '     <video class="video-js vjs-default-skin vjs-mental-skin" width="100%" height="100%" controls preload="none"
-                                    poster=' . URL . 'public/archivos/' . $imgVideo . '
-                                    data-setup="{}">
-                                    <source src="' . URL . '/public/archivos/' . utf8_encode($videos['video'][0]['archivo']) . '" type="' . $videos['video'][0]['type'] . '" />
-                                </video>';
+            $contenido .= $this->helper->loadVideo($id);
         } else {
             $contenido .= $this->helper->messageAlert('info', 'Este post no contiene ningún video');
         }
@@ -296,6 +300,33 @@ class Admin_Model extends Model {
         $datos = array(
             "result" => true,
             'id' => $id,
+            'content' => $contenido
+        );
+        return $datos;
+    }
+
+    public function uploadVideo($data) {
+        $idPost = $data['id'];
+        $sql = $this->db->select("selec id from post_archivo where id_tipo_archivo = 2 and id_post = $idPost");
+        if (!empty($sql)) {
+            $idArchivo = $sql[0]['id'];
+            $updateVideo = array(
+                'descripcion' => $data['archivo']
+            );
+            $this->db->update('post_archivo', $updateVideo, "`id` = $idArchivo");
+        } else {
+            $this->db->insert('post_archivo', array(
+                'id_post' => $idPost,
+                'id_tipo_archivo' => 2,
+                'descripcion' => $data['archivo'],
+                'estado' => 1
+            ));
+            $idArchivo = $this->db->lastInsertId();
+        }
+        $contenido = $this->helper->loadVideo($idPost);
+        $datos = array(
+            "result" => true,
+            'id' => $idPost,
             'content' => $contenido
         );
         return $datos;

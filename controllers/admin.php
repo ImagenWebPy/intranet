@@ -125,6 +125,46 @@ class Admin extends Controller {
             exit();
         }
     }
+    
+    public function uploadVideo() {
+        if (!empty($_POST)) {
+            $idPost = $_POST['data']['id'];
+            $error = false;
+            $absolutedir = dirname(__FILE__);
+            $dir = 'public/archivos/';
+            $serverdir = $dir;
+            $tmp = explode(',', $_POST['file']);
+            $file = base64_decode($tmp[1]);
+            $ext = explode('.', $_POST['filename']);
+            $extension = strtolower(end($ext));
+            $name = $_POST['name'];
+            $filename = $name . '.' . $extension;
+            //$filename				= $file.'.'.substr(sha1(time()),0,6).'.'.$extension;
+
+            $handle = fopen($serverdir . $filename, 'w');
+            fwrite($handle, $file);
+            fclose($handle);
+
+            header('Content-type: application/json; charset=utf-8');
+            $data = array(
+                'id' => $idPost,
+                'archivo' => $filename
+            );
+            $response = $this->model->uploadVideo($data);
+            echo json_encode($response);
+
+            //echo json_encode(array('result'=>true));
+        } else {
+            $filename = basename($_SERVER['QUERY_STRING']);
+            var_dump($filename);
+            $file_url = '/public/archivos/' . $filename;
+            header('Content-Type: 				application/octet-stream');
+            header("Content-Transfer-Encoding: 	Binary");
+            header("Content-disposition: 		attachment; filename=\"" . basename($file_url) . "\"");
+            readfile($file_url);
+            exit();
+        }
+    }
 
     public function mostrarImgBtn() {
         header('Content-type: application/json; charset=utf-8');

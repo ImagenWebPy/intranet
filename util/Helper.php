@@ -461,4 +461,21 @@ class Helper {
         return $item;
     }
 
+    public function loadVideo($id) {
+        $video = $this->getFilesPost($id, 2);
+        $videos = $this->getArchivosPOst($id);
+        $imgVideo = '';
+        foreach ($videos['imagenes'] as $item) {
+            if ($item['principal'] == 1) {
+                $imgVideo = utf8_encode($item['imagen']);
+            }
+        }
+        $contenido = '     <video class="video-js vjs-default-skin vjs-mental-skin" width="100%" height="100%" controls preload="none"
+                                    poster=' . URL . 'public/archivos/' . $imgVideo . '
+                                    data-setup="{}">
+                                    <source src="' . URL . '/public/archivos/' . utf8_encode($videos['video'][0]['archivo']) . '" type="' . $videos['video'][0]['type'] . '" />
+                                </video>';
+        return $contenido;
+    }
+
 }

@@ -146,11 +146,21 @@
             }
             e.handled = true;
         });
-        //GUARDAR CAMBIOS POST
+        //SUBIR IMAGENES
         $(document).on("click", ".btnAddImagen", function (e) {
             if (e.handled !== true) // This will prevent event triggering more then once
             {
                 $(".divSubir").toggle();
+                $(".demo_multi").css('display', 'inline-block');
+            }
+            e.handled = true;
+        });
+        //SUBIR VIDEO
+        $(document).on("click", ".btnAddVideo", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                $(".divSubirVideo").toggle();
+                $(".demo_video").css('display', 'inline-block');
             }
             e.handled = true;
         });
