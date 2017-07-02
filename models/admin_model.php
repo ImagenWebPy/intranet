@@ -225,7 +225,7 @@ class Admin_Model extends Model {
                                             Solo se puede subir un video con extension <strong>.mp4</strong>. Al subir otro, el anterior sera re-emplazado. Tamaño máximo <strong>40MB</strong>
                                          </div>
                                     </div>
-                                    <div class="html5fileupload demo_video" data-multiple="false" data-url="' . URL . 'admin/uploadVideo" data-max-filesize="40960000" style="width: 100%;">
+                                    <div class="html5fileupload demo_video" data-multiple="false" data-url="' . URL . 'admin/uploadVideo" data-valid-extensions="mp4" data-max-filesize="40960000" style="width: 100%;">
                                         <input type="file" name="file" />
                                     </div>
                                     <script>
@@ -421,6 +421,139 @@ class Admin_Model extends Model {
             );
         }
         return $datos;
+    }
+
+    public function agregarContenido() {
+        $contenido = '<div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Contenido</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <form role="form" method="POST" action="' . URL . 'admin/guardarDatosPost" class="frmAgregarPost">
+                            <div class="box-body">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label>Título</label>
+                                          <input type="text" class="form-control" placeholder="ingrese un título" value="" name="titulo">
+                                        </div>
+                                    </div>
+                                    <div class="cold-md-6">
+                                        <div class="form-group">
+                                            <label>Fecha Evento:</label>
+                                            <div class="input-group date">
+                                              <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                              </div>
+                                              <input type="text" class="form-control pull-right datepicker" value="" name="fecha">
+                                            </div>
+                                            <!-- /.input group -->
+                                          </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Categoría</label>
+                                            <select class="form-control" name="categoria">';
+            foreach ($this->helper->getCategorias() as $item) {
+                $contenido .= '<option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
+            }
+            $contenido .= '                 </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Tipo Evento</label>
+                                            <select class="form-control" name="tipo_evento">';
+            foreach ($this->helper->getTipoEventos() as $item) {
+                $contenido .= '<option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
+            }
+            $contenido .= '                 </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Estado</label>
+                                            <select class="form-control" name="estado">
+                                              <option value="1">Activo</option>
+                                              <option value="0">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label>Tags</label>
+                                          <input type="text" class="form-control" id="tags" placeholder="Ingrese los tags separados por comas(,)" value="" name="tags">
+                                              <p class="help-block">Ingrese palabras separadas por comas(,)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="box-body pad">
+                                            <textarea id="contenido" name="contenido" rows="10" cols="80" name="contenido"></textarea>
+                                      </div>
+                                    </div>
+                            </div>
+                            <!-- /.box-body --> 
+                        </div>
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Imagenes</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row" style="margin: 20px;">
+                                    <div class="col-md-12 divSubir">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-warning alert-dismissible">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                                Solo se permiten imagenes <strong>.jpg,.png</strong>. Tamaño máximo <strong>512KB</strong>
+                                             </div>
+                                        </div>
+                                        <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-form="true" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%; display: inline-block;">
+                                            <input type="file" name="file" />
+                                        </div>
+                                        <script>
+                                            $(".html5fileupload.demo_multi").html5fileupload();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Video</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row" style="margin: 20px;">
+                                    <div class="col-md-12 divSubirVideo">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-warning alert-dismissible" >
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                                Solo se puede subir un video con extension <strong>.mp4</strong>. Al subir otro, el anterior sera re-emplazado. Tamaño máximo <strong>40MB</strong>
+                                             </div>
+                                        </div>
+                                        <div class="html5fileupload demo_video" data-multiple="false" data-form="true" data-url="' . URL . 'admin/uploadVideo" data-max-filesize="40960000" data-valid-extensions="mp4" style="width: 100%; display: inline-block;">
+                                            <input type="file" name="file" />
+                                        </div>
+                                        <script>
+                                            $(".html5fileupload.demo_video").html5fileupload();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-block btn-success btnFrmAddContenido btn-lg">Agregar Contenido</button>
+                            </div>
+                        </form>
+                    </div>
+                    <script type="text/javascript">
+                        $(".datepicker").datepicker({
+                            format: "dd-mm-yyyy",
+                            autoclose: true
+                        });
+                        $("#tags").tagsInput();
+                        CKEDITOR.replace("contenido");
+                    </script>';
+        return $contenido;
     }
 
 }

@@ -192,5 +192,11 @@ class Admin extends Controller {
         $datos = $this->model->eliminarIMG($data);
         echo json_encode($datos);
     }
+    
+    public function agregarContenido() {
+        header('Content-type: application/json; charset=utf-8');
+        $datos = $this->model->agregarContenido();
+        echo json_encode($datos);
+    }
 
 }

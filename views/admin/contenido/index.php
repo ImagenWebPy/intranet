@@ -14,7 +14,7 @@
             <!-- /.box-header -->
             <div class="box-header">
                 <div class="col-md-4 pull-right">
-                    <button type="button" class="btn btn-block btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Contenido</button>
+                    <button type="button" class="btn btn-block btn-primary btn-Add-Contenido"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Contenido</button>
                 </div>
             </div>
             <div class="box-body">
@@ -221,6 +221,24 @@
                         if (data.result != false) {
                             $("#imagenGaleria" + data.id).remove();
                         }
+                    }
+                }); //END AJAX
+            }
+            e.handled = true;
+        });
+        //BTN ELIMINAR IMG
+        $(document).on("click", ".btn-Add-Contenido", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                $.ajax({
+                    url: "<?= URL; ?>admin/agregarContenido",
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $('.modalContent').modal('toggle');
+                        $('.modalContent .modal-header').addClass('modal-header bg-primary');
+                        $('.modalContent .modal-header').html('Agregar Contenido');
+                        $('.modalContent .modal-body').html(data);
                     }
                 }); //END AJAX
             }
