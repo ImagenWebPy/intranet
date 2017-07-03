@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-06-22 17:52:26
+Date: 2017-07-03 10:40:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,12 +26,18 @@ CREATE TABLE `admin` (
   `password` varchar(145) DEFAULT NULL,
   `estado` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES ('1', 'Raul Ramirez', 'raul.ramirez@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('2', 'Daniel Gomez', 'dgomez@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('3', 'Antonio Ojeda', 'antonio.ojeda@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('4', 'Jose Peña', 'jpena@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('5', 'Tamara Monzon', 'tamara.monzon.@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('6', 'Elsa Sanabria', 'elsa.sanabria@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
+INSERT INTO `admin` VALUES ('7', 'Aldo Ojeda', 'aldo.ojeda@garden.com.py', '4530ad981d5c02d9cb0456c360fae460803922f556c56022e1dc0187c16ced50', '1');
 
 -- ----------------------------
 -- Table structure for `categoria`

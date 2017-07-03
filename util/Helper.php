@@ -307,11 +307,16 @@ class Helper {
     }
 
     public function mostrarMobileLogo() {
+        if (!empty($_SESSION['usuario']['nombre'])) {
+            $nombre = $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido'];
+        } else {
+            $nombre = '';
+        }
         $content = '<div id="header-mobile" class="visible-xs">
                         <header>
                             <div class="m-header-body">
                                 <img src="' . URL . 'public/assets/img/logo-garden.png" class="logo" alt="Logo">
-                                <p class="m-site-descr">Hola ' . $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido'] . '</p>
+                                <p class="m-site-descr">Hola ' . $nombre . '</p>
                             </div>
                         </header>
                     </div>';
@@ -476,6 +481,17 @@ class Helper {
                                     <source src="' . URL . '/public/archivos/' . utf8_encode($videos['video'][0]['archivo']) . '" type="' . $videos['video'][0]['type'] . '" />
                                 </video>';
         return $contenido;
+    }
+
+    public function cantidadPublicaciones() {
+        $sql = $this->db->select("select c.descripcion as categoria, 
+                                    COUNT(p.id) AS cantidad
+                               from post p
+                               LEFT JOIN post_categoria pc on pc.id_post = p.id
+                               LEFT JOIN categoria c on c.id = pc.id_categoria
+                               GROUP BY c.descripcion
+                               ORDER BY cantidad DESC");
+        return $sql;
     }
 
 }

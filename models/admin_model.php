@@ -53,9 +53,9 @@ class Admin_Model extends Model {
         foreach ($sql as $item) {
             $idPost = $item['id'];
             if ($item['estado'] == 1) {
-                $estado = '<span><a class="pointer label label-success linkListaEstadoPost" data-post="' . $idPost . '">Visible</a></span>';
+                $estado = '<span><a class="pointer label label-success linkListaEstadoPost" id="estadoPost' . $idPost . '" data-post="' . $idPost . '">Visible</a></span>';
             } else {
-                $estado = '<span><a class="pointer label label-danger linkListaEstadoPost" data-post="' . $idPost . '">Oculto</a></span>';
+                $estado = '<span><a class="pointer label label-danger linkListaEstadoPost" id="estadoPost' . $idPost . '" data-post="' . $idPost . '">Oculto</a></span>';
             }
             $acciones = '<a class="btn btn-sm btnEditPost" data-post="' . $idPost . '"><i class="fa fa-edit"></i>Editar</a> <a class="btn btn-sm btnDeletePost" data-post="' . $idPost . '"><i class="fa fa-trash"></i>Eliminar</a>';
             array_push($datos, array(
@@ -426,11 +426,10 @@ class Admin_Model extends Model {
     public function agregarContenido() {
         $contenido = '<form role="form" method="POST" action="' . URL . 'admin/agregarDatosPost" class="frmAgregarPost" enctype="multipart/form-data">
                         <div class="box box-primary">
-                        <div class="box-header with-border">
-                          <h3 class="box-title">Contenido</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Contenido</h3>
+                            </div>
+                            <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -543,7 +542,7 @@ class Admin_Model extends Model {
                                 <button type="submit" class="btn btn-block btn-success btnFrmAddContenido btn-lg">Agregar Contenido</button>
                             </div>
                         
-                    </div>
+                        </div>
                     </form>
                     <script type="text/javascript">
                         $(document).ready(function() {
@@ -579,8 +578,8 @@ class Admin_Model extends Model {
             'id_categoria' => $data['categoria'],
         ));
         #INSERTAMOS LAS IMAGENES
-        $cantImagenes = count($data['imagenes']);
-        for ($i = 1; $i <= $cantImagenes; $i ++) {
+        $cantImagenes = count($data['imagenes']) -1;
+        for ($i = 0; $i <= $cantImagenes; $i ++) {
             $imgPrincipal = ($i == 1) ? 1 : 0;
             $this->db->insert('post_archivo', array(
                 'id_post' => $id_post,
@@ -602,6 +601,30 @@ class Admin_Model extends Model {
                 ));
             }
         }
+    }
+
+    public function cambiarEstadoPost($data) {
+        $id = $data['id'];
+        $sql = $this->db->select("select estado from post where id = $id");
+        if ($sql[0]['estado'] == 1) {
+            $update = array('estado' => 0);
+            $class = 'pointer label label-danger linkListaEstadoPost';
+            $texto = 'Oculto';
+            $estado = 0;
+        } else {
+            $update = array('estado' => 1);
+            $class = 'pointer label label-success linkListaEstadoPost';
+            $texto = 'Visible';
+            $estado = 1;
+        }
+        $this->db->update('post', $update, "`id` = $id");
+        $datos = array(
+            'id' => $id,
+            'clase' => $class,
+            'texto' => $texto,
+            'estado' => $estado
+        );
+        return $datos;
     }
 
 }

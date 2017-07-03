@@ -1,3 +1,4 @@
+<?php $helper = new Helper; ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -15,20 +16,24 @@
     <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>150</h3>
+            <?php foreach ($helper->cantidadPublicaciones() as $item): ?>
+                <div class="col-lg-2 col-xs-5">
 
-                        <p>New Orders</p>
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3><?= $item['cantidad']; ?></h3>
+
+                            <p><?= $item['categoria']; ?></p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <!--<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
                     </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+
                 </div>
-            </div>
+            <?php endforeach; ?>
             <!-- ./col -->
         </div>
         <!-- /.row -->

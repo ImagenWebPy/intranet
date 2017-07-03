@@ -228,7 +228,7 @@ class Admin extends Controller {
         }
         #VIDEO
         $videos = array();
-        if (!empty($_FILES['file_video']['name'])) {
+        if (!empty($_FILES['file_video']['name'][0])) {
             $cantVideo = count($_FILES['file_video']['name']) - 1;
             for ($i = 0; $i <= $cantVideo; $i++) {
                 $newname = $_FILES['file_video']['name'][$i];
@@ -256,6 +256,15 @@ class Admin extends Controller {
         );
         $this->model->agregarDatosPost($data);
         header('Location: ' . URL . 'admin/contenido');
+    }
+
+    public function cambiarEstadoPost() {
+        header('Content-type: application/json; charset=utf-8');
+        $data = array(
+            'id' => $this->helper->cleanInput($_POST['id'])
+        );
+        $datos = $this->model->cambiarEstadoPost($data);
+        echo json_encode($datos);
     }
 
 }

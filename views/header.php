@@ -1,5 +1,10 @@
 <?php
 $helper = new Helper();
+if (!empty($_SESSION['usuario']['nombre'])) {
+    $nombre = $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido'];
+} else {
+    $nombre = '';
+}
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -75,7 +80,7 @@ $helper = new Helper();
                     <div class="mb-body">
                         <div class="mb-header hidden-xs">
                             <img src="<?= URL; ?>public/assets/img/logo-garden.png" class="logo center-block" alt="Logo Garden" width="100" height="100">
-                            <p class="mb-site-descr text-center">Hola <?= $_SESSION['usuario']['nombre'] . ' ' . $_SESSION['usuario']['apellido']; ?></p>
+                            <p class="mb-site-descr text-center">Hola <?= $nombre ?></p>
                         </div>
                         <div class="mb-content">
                             <nav>

@@ -279,5 +279,29 @@
             }
             e.handled = true;
         });
+        //CAMBIAR ESTADO LISTADO
+        $(document).on("click", ".linkListaEstadoPost", function (e) {
+            if (e.handled !== true) // This will prevent event triggering more then once
+            {
+                var id = $(this).attr("data-post");
+                $.ajax({
+                    url: "<?= URL; ?>admin/cambiarEstadoPost",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        if (data.estado == 1) {
+                            $('#estadoPost' + data.id).removeClass('pointer label label-danger linkListaEstadoPost').addClass(data.clase);
+                        } else {
+                            $('#estadoPost' + data.id).removeClass('pointer label label-success linkListaEstadoPost').addClass(data.clase);
+                        }
+                        $('#estadoPost' + data.id).html(data.texto);
+                    }
+                }); //END AJAX
+            }
+            e.handled = true;
+        });
     });
 </script>
