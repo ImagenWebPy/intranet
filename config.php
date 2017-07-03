@@ -15,7 +15,7 @@ switch ($host) {
         define('DB_NAME', 'intranet');
         break;
     case 'garden.com.py':
-        define('URL', 'http://garden.com.py/institucional/');
+        define('URL', 'http://www.garden.com.py/institucional/');
         define('DB_USER', 'web');
         define('DB_PASS', 'WebG@rdenMKT');
         define('DB_NAME', 'intranet');
