@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-07-03 10:40:13
+Date: 2017-07-03 14:26:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,11 +62,11 @@ INSERT INTO `categoria` VALUES ('5', 'MINI', 'mini', '1');
 INSERT INTO `categoria` VALUES ('6', 'Jeep', 'jeep', '1');
 INSERT INTO `categoria` VALUES ('7', 'Dodge', 'dodge', '1');
 INSERT INTO `categoria` VALUES ('8', 'RAM', 'ram', '1');
-INSERT INTO `categoria` VALUES ('9', 'Chrysler', 'chrysler', '1');
+INSERT INTO `categoria` VALUES ('9', 'Digital', 'digital', '1');
 INSERT INTO `categoria` VALUES ('10', 'Mazda', 'mazda', '1');
 INSERT INTO `categoria` VALUES ('11', 'Mopar', 'mopar', '1');
 INSERT INTO `categoria` VALUES ('12', 'Nissan', 'nissan', '1');
-INSERT INTO `categoria` VALUES ('13', 'División Usados', 'usados', '1');
+INSERT INTO `categoria` VALUES ('13', 'Usados', 'usados', '1');
 
 -- ----------------------------
 -- Table structure for `post`

@@ -14,6 +14,12 @@ switch ($host) {
         define('DB_PASS', 'WebG@rdenMKT');
         define('DB_NAME', 'intranet');
         break;
+    case 'garden.com.py':
+        define('URL', 'http://garden.com.py/institucional/');
+        define('DB_USER', 'web');
+        define('DB_PASS', 'WebG@rdenMKT');
+        define('DB_NAME', 'intranet');
+        break;
     case '192.168.0.25':
         define('URL', 'http://192.168.0.25/institucional/');
         define('DB_USER', 'root');

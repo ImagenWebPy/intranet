@@ -95,11 +95,13 @@ if (!empty($_SESSION['usuario']['nombre'])) {
                             </nav>
                         </div>
                         <div class="mb-footer">
-                            <a href="<?= URL; ?>cuenta/micuenta" class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
-                            <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
+                            <?php if (!empty($_SESSION['usuario']['nombre'])): ?>
+                                <a href="<?= URL; ?>cuenta/micuenta" class="pointer"><h4><i class="fa fa-user" aria-hidden="true"></i> Mis datos</h4></a>
+                                <a href="<?= URL; ?>login/salir" class="pointer"><h4><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</h4></a>
+                            <?php endif; ?>
                             <div class="mb-copyright">
                                 <p>© 2017 Todos los Derechos Reservados</p>
-                                <p>Desarrollado por Marketing</p>
+                                <p>Desarrollado por <a href="mailto:raul.ramirez@garden.com.py">Marketing</a></p>
                             </div>
                         </div>
                     </div> <!-- mb-body -->
