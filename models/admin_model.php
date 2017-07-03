@@ -424,72 +424,71 @@ class Admin_Model extends Model {
     }
 
     public function agregarContenido() {
-        $contenido = '<div class="box box-primary">
+        $contenido = '<form role="form" method="POST" action="' . URL . 'admin/agregarDatosPost" class="frmAgregarPost" enctype="multipart/form-data">
+                        <div class="box box-primary">
                         <div class="box-header with-border">
                           <h3 class="box-title">Contenido</h3>
                         </div>
                         <!-- /.box-header -->
-                        <form role="form" method="POST" action="' . URL . 'admin/guardarDatosPost" class="frmAgregarPost">
+                        
                             <div class="box-body">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label>Título</label>
-                                          <input type="text" class="form-control" placeholder="ingrese un título" value="" name="titulo">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Título</label>
+                                        <input type="text" class="form-control" placeholder="ingrese un título" value="" name="titulo">
+                                    </div>
+                                </div>
+                                <div class="cold-md-6">
+                                    <div class="form-group">
+                                        <label>Fecha Evento:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="text" class="form-control pull-right datepicker" value="" name="fecha">
                                         </div>
+                                        <!-- /.input group -->
                                     </div>
-                                    <div class="cold-md-6">
-                                        <div class="form-group">
-                                            <label>Fecha Evento:</label>
-                                            <div class="input-group date">
-                                              <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                              </div>
-                                              <input type="text" class="form-control pull-right datepicker" value="" name="fecha">
-                                            </div>
-                                            <!-- /.input group -->
-                                          </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Categoría</label>
+                                        <select class="form-control" name="categoria">';
+        foreach ($this->helper->getCategorias() as $item) {
+            $contenido .= '             <option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
+        }
+        $contenido .= '             </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Categoría</label>
-                                            <select class="form-control" name="categoria">';
-            foreach ($this->helper->getCategorias() as $item) {
-                $contenido .= '<option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
-            }
-            $contenido .= '                 </select>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tipo Evento</label>
+                                        <select class="form-control" name="tipo_evento">';
+        foreach ($this->helper->getTipoEventos() as $item) {
+            $contenido .= '             <option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
+        }
+        $contenido .= '             </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Tipo Evento</label>
-                                            <select class="form-control" name="tipo_evento">';
-            foreach ($this->helper->getTipoEventos() as $item) {
-                $contenido .= '<option value="' . $item['id'] . '">' . utf8_encode($item['descripcion']) . '</option >';
-            }
-            $contenido .= '                 </select>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Estado</label>
+                                        <select class="form-control" name="estado">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Estado</label>
-                                            <select class="form-control" name="estado">
-                                              <option value="1">Activo</option>
-                                              <option value="0">Inactivo</option>
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tags</label>
+                                        <input type="text" class="form-control" id="tags" placeholder="Ingrese los tags separados por comas(,)" value="" name="tags">
+                                        <p class="help-block">Ingrese palabras separadas por comas(,)</p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label>Tags</label>
-                                          <input type="text" class="form-control" id="tags" placeholder="Ingrese los tags separados por comas(,)" value="" name="tags">
-                                              <p class="help-block">Ingrese palabras separadas por comas(,)</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-body pad">
+                                        <textarea id="contenido" name="contenido" rows="10" cols="80" name="contenido"></textarea>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="box-body pad">
-                                            <textarea id="contenido" name="contenido" rows="10" cols="80" name="contenido"></textarea>
-                                      </div>
-                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body --> 
                         </div>
@@ -507,8 +506,8 @@ class Admin_Model extends Model {
                                                 Solo se permiten imagenes <strong>.jpg,.png</strong>. Tamaño máximo <strong>512KB</strong>
                                              </div>
                                         </div>
-                                        <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-form="true" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%; display: inline-block;">
-                                            <input type="file" name="file" />
+                                        <div class="html5fileupload demo_multi" data-multiple="true" data-form="true" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%; display: inline-block;">
+                                            <input type="file" name="file_archivo[]" />
                                         </div>
                                         <script>
                                             $(".html5fileupload.demo_multi").html5fileupload();
@@ -517,43 +516,92 @@ class Admin_Model extends Model {
                                 </div>
                             </div>
                         </div>
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Video</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="row" style="margin: 20px;">
-                                    <div class="col-md-12 divSubirVideo">
-                                        <div class="col-md-12">
-                                            <div class="alert alert-warning alert-dismissible" >
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                <h4><i class="icon fa fa-warning"></i> Importante!</h4>
-                                                Solo se puede subir un video con extension <strong>.mp4</strong>. Al subir otro, el anterior sera re-emplazado. Tamaño máximo <strong>40MB</strong>
-                                             </div>
-                                        </div>
-                                        <div class="html5fileupload demo_video" data-multiple="false" data-form="true" data-url="' . URL . 'admin/uploadVideo" data-max-filesize="40960000" data-valid-extensions="mp4" style="width: 100%; display: inline-block;">
-                                            <input type="file" name="file" />
-                                        </div>
-                                        <script>
-                                            $(".html5fileupload.demo_video").html5fileupload();
-                                        </script>
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Video</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row" style="margin: 20px;">
+                                        <div class="col-md-12 divSubirVideo">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-warning alert-dismissible" >
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <h4><i class="icon fa fa-warning"></i> Importante!</h4>
+                                                    Solo se puede subir un video con extension <strong>.mp4</strong>. Al subir otro, el anterior sera re-emplazado. Tamaño máximo <strong>40MB</strong>
+                                                </div>
+                                            </div>
+                                            <div class="html5fileupload demo_video" data-multiple="false" data-form="true" data-max-filesize="40960000" data-valid-extensions="mp4" style="width: 100%; display: inline-block;">
+                                                <input type="file" name="file_video[]" />
+                                            </div>
+                                            <script>
+                                                $(".html5fileupload.demo_video").html5fileupload();
+                                            </script>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-block btn-success btnFrmAddContenido btn-lg">Agregar Contenido</button>
                             </div>
-                        </form>
+                        
                     </div>
+                    </form>
                     <script type="text/javascript">
-                        $(".datepicker").datepicker({
-                            format: "dd-mm-yyyy",
-                            autoclose: true
+                        $(document).ready(function() {
+                            $(".datepicker").datepicker({
+                                format: "dd-mm-yyyy",
+                                autoclose: true
+                            });
+                            $("#tags").tagsInput();
+                            CKEDITOR.replace("contenido");
                         });
-                        $("#tags").tagsInput();
-                        CKEDITOR.replace("contenido");
                     </script>';
         return $contenido;
+    }
+
+    public function agregarDatosPost($data) {
+        #INSERTAMOS EL POST
+        $this->db->insert('post', array(
+            'titulo' => utf8_decode($data['titulo']),
+            'contenido' => utf8_decode($data['contenido']),
+            'tags' => utf8_decode($data['tags']),
+            'fecha' => date('Y-m-d', strtotime($data['fecha'])),
+            'estado' => $data['estado']
+        ));
+        $id_post = $this->db->lastInsertId();
+        #INSERTAMOS EL POST TIPO
+        $this->db->insert('post_tipo', array(
+            'id_post' => $id_post,
+            'id_tipo_evento' => $data['tipo_evento'],
+        ));
+        #INSERTAMOS EL POST CATEGORIA
+        $this->db->insert('post_categoria', array(
+            'id_post' => $id_post,
+            'id_categoria' => $data['categoria'],
+        ));
+        #INSERTAMOS LAS IMAGENES
+        $cantImagenes = count($data['imagenes']);
+        for ($i = 1; $i <= $cantImagenes; $i ++) {
+            $imgPrincipal = ($i == 1) ? 1 : 0;
+            $this->db->insert('post_archivo', array(
+                'id_post' => $id_post,
+                'id_tipo_archivo' => 1,
+                'descripcion' => $data['imagenes'][$i],
+                'img_principal' => $imgPrincipal,
+                'estado' => 1
+            ));
+        }
+        #INSERTAMOS EL VIDEO
+        if (!empty($data['videos'])) {
+            foreach ($data['videos'] as $item) {
+                $this->db->insert('post_archivo', array(
+                    'id_post' => $id_post,
+                    'id_tipo_archivo' => 2,
+                    'descripcion' => $item,
+                    'img_principal' => 0,
+                    'estado' => 1
+                ));
+            }
+        }
     }
 
 }
