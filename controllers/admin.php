@@ -81,7 +81,7 @@ class Admin extends Controller {
             'tipo_evento' => $this->helper->cleanInput($_POST['tipo_evento']),
             'estado' => $this->helper->cleanInput($_POST['estado']),
             'tags2' => $this->helper->cleanInput($_POST['tags2']),
-            'contenido' => $this->helper->cleanInput($_POST['contenido'])
+            'contenido' => $_POST['contenido']
         );
         $this->model->guardarDatosPost($data);
         header('Location: ' . URL . 'admin/contenido');
