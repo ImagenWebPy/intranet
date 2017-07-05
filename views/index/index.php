@@ -41,6 +41,7 @@ $helper = new Helper();
                             <div class="row gl-preview-container">
                                 <?php
                                 $archivos = $helper->getArchivosPOst($contenido['id']);
+                                $fechaUltimoPost = $contenido['fecha'];
                                 ?>
                                 <?php if ($archivos['tipo'] == 'imagen'): ?>
                                     <div class="col-sm-8">
@@ -103,20 +104,19 @@ $helper = new Helper();
             </ul> <!-- gallery -->
         </section>
     </div> <!-- section -->
-
-
     <div id="footer" class="ft-single-post text-center">
         <footer>
-            <a href="#" class="footer-loadmore" data-link="#" data-offset="5" data-items-per-page="5">Cargar más</a>
+            <a href="#" class="footer-loadmore" data-url="<?= URL; ?>" data-fecha="<?= $fechaUltimoPost; ?>" data-items="8">Cargar más</a>
             <span class="loading-spinner" style="display:none;"></span>
         </footer>
     </div>
-
 </div> <!-- main -->
 <script type="text/javascript">
-    $('.gl-item').hover(function () {
-        $(this).find('.divTitulosPost:first').hide()
-    }, function () {
-        $(this).find('.divTitulosPost:first').show();
+    $(function () {
+        $('.gl-item').hover(function () {
+            $(this).find('.divTitulosPost:first').hide()
+        }, function () {
+            $(this).find('.divTitulosPost:first').show();
+        });
     });
 </script>

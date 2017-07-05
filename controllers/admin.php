@@ -40,6 +40,7 @@ class Admin extends Controller {
     }
 
     public function contenido() {
+        Auth::handleLoginAdmin();
         $this->view->title = "Contenido";
 
         $this->view->render('admin/header');

@@ -473,24 +473,27 @@
             remove_preview();
             var $this = $(this).hide();
             var $spinner = $(this).siblings('.loading-spinner').show();
-
+            var urlMVC = $(this).attr('data-url');
+            var fecha = $(this).attr('data-fecha');
+            var items = $(this).attr('data-items');
             $.ajax({
                 type: "POST",
-                url: 'ajax/gallery-previews.html',
+                url: urlMVC + 'post/loadMore',
                 data: JSON.stringify({
                     active_category: $('.gallety-filters li.active a').data('filter'),
                     offset: $gallery.find('.gl-item').length,
-                    somedata: 'some data'
+                    fecha: fecha,
+                    items: items,
                 }),
                 success: function (data) {
                     // Get elements from request
-                    var $elems = $('<div>' + data + '</div>').find('.gl-item');
+                    var $elems = $('<div>' + data.lista + '</div>').find('.gl-item');
                     // append elements to container
                     $gallery.append($elems)
                     // add and lay out newly appended elements
                     refresh_items_order_data();
                     $gallery.isotope('appended', $elems);
-
+                    $('.footer-loadmore').attr('data-fecha',data.fecha_ultimo_post);
                     process_images_load();
 
                 },

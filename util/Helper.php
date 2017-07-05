@@ -225,7 +225,7 @@ class Helper {
                                         LEFT JOIN tipo_evento te on te.id = pt.id_tipo_evento
                                         where p.estado = 1
                                         ORDER BY p.fecha DESC
-                                        LIMIT 20");
+                                        LIMIT 16");
         return $contenido;
     }
 
