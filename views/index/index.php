@@ -92,9 +92,10 @@ $helper = new Helper();
                                         </div>
                                     </div>
                                 <?php endif; ?>
+                                <?php $textoResumido = (strlen($contenido['contenido']) > 180) ? substr(utf8_encode($contenido['contenido']), 0, 180) . '...' : $contenido['contenido']; ?>
                                 <div class="col-sm-4 lg-preview-descr sourcePro">
                                     <h4><?= utf8_encode($contenido['titulo']); ?></h4>
-                                    <?= (strlen($contenido['contenido']) > 180) ? substr(utf8_encode($contenido['contenido']), 0, 180) . '...' : $contenido['contenido']; ?>
+                                    <p><?= strip_tags($textoResumido); ?></p>
                                     <a href="<?= URL; ?>post/contenido/<?= $contenido['id'] . '/' . $this->helper->getPostTitle($contenido['id'])['url']; ?>" class="btn btn-primary glp-readmore linkWhite">Leer màs</a>
                                 </div>
                             </div>

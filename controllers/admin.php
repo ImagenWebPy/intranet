@@ -100,7 +100,8 @@ class Admin extends Controller {
             $ext = explode('.', $_POST['filename']);
             $extension = strtolower(end($ext));
             $name = $_POST['name'];
-            $filename = $name . '.' . $extension;
+            $filename = $idPost . '_' . $name . '.' . $extension;
+            $filename = $this->helper->cleanUrl($filename);
             //$filename				= $file.'.'.substr(sha1(time()),0,6).'.'.$extension;
 
             $handle = fopen($serverdir . $filename, 'w');
@@ -139,7 +140,8 @@ class Admin extends Controller {
             $ext = explode('.', $_POST['filename']);
             $extension = strtolower(end($ext));
             $name = $_POST['name'];
-            $filename = $name . '.' . $extension;
+            $filename = $idPost . '_' . $name . '.' . $extension;
+            $filename = $this->helper->cleanUrl($filename);
             //$filename				= $file.'.'.substr(sha1(time()),0,6).'.'.$extension;
 
             $handle = fopen($serverdir . $filename, 'w');
@@ -208,6 +210,18 @@ class Admin extends Controller {
         $estado = $this->helper->cleanInput($_POST['estado']);
         $tags = $this->helper->cleanInput($_POST['tags2']);
         $contenido = $_POST['contenido'];
+        #Insertamos los datos para obtener el ID
+        $data = array(
+            'titulo' => $titulo,
+            'fecha' => $fecha,
+            'categoria' => $categoria,
+            'tipo_evento' => $tipo_evento,
+            'estado' => $estado,
+            'tags' => $tags,
+            'contenido' => $contenido
+        );
+        $datos = $this->model->agregarDatosPost($data);
+        $id = $datos['id'];
         #SUBIMOS LOS ARCHIVOS
         $error = false;
         $absolutedir = dirname(__FILE__);
@@ -217,8 +231,8 @@ class Admin extends Controller {
         $cantImagenes = count($_FILES['file_archivo']['name']) - 1;
         $imagenes = array();
         for ($i = 0; $i <= $cantImagenes; $i++) {
-            $newname = $_FILES['file_archivo']['name'][$i];
-            $fname = $newname;
+            $newname = $id . '_' . $_FILES['file_archivo']['name'][$i];
+            $fname = $this->helper->cleanUrl($newname);
 
             $contents = file_get_contents($_FILES['file_archivo']['tmp_name'][$i]);
 
@@ -232,8 +246,8 @@ class Admin extends Controller {
         if (!empty($_FILES['file_video']['name'][0])) {
             $cantVideo = count($_FILES['file_video']['name']) - 1;
             for ($i = 0; $i <= $cantVideo; $i++) {
-                $newname = $_FILES['file_video']['name'][$i];
-                $fname = $newname;
+                $newname = $id . '_' . $_FILES['file_video']['name'][$i];
+                $fname = $this->helper->cleanUrl($newname);
 
                 $contents = file_get_contents($_FILES['file_video']['tmp_name'][$i]);
 
@@ -244,18 +258,13 @@ class Admin extends Controller {
                 $videos[] = $fname;
             }
         }
-        $data = array(
-            'titulo' => $titulo,
-            'fecha' => $fecha,
-            'categoria' => $categoria,
-            'tipo_evento' => $tipo_evento,
-            'estado' => $estado,
-            'tags' => $tags,
-            'contenido' => $contenido,
+        #INSERTAMOS LAS IMAGENES EN LA BD
+        $dataFiles = array(
+            'id' => $id,
             'imagenes' => $imagenes,
             'videos' => $videos
         );
-        $this->model->agregarDatosPost($data);
+        $this->model->agregarDatosPostFiles($dataFiles);
         header('Location: ' . URL . 'admin/contenido');
     }
 

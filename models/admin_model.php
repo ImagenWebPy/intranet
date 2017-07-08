@@ -577,12 +577,20 @@ class Admin_Model extends Model {
             'id_post' => $id_post,
             'id_categoria' => $data['categoria'],
         ));
+        $datos = array(
+            'id' => $id_post
+        );
+        return $datos;
+    }
+
+    public function agregarDatosPostFiles($data) {
+        $id = $data['id'];
         #INSERTAMOS LAS IMAGENES
-        $cantImagenes = count($data['imagenes']) -1;
+        $cantImagenes = count($data['imagenes']) - 1;
         for ($i = 0; $i <= $cantImagenes; $i ++) {
-            $imgPrincipal = ($i == 1) ? 1 : 0;
+            $imgPrincipal = ($i == 0) ? 1 : 0;
             $this->db->insert('post_archivo', array(
-                'id_post' => $id_post,
+                'id_post' => $id,
                 'id_tipo_archivo' => 1,
                 'descripcion' => $data['imagenes'][$i],
                 'img_principal' => $imgPrincipal,
@@ -593,7 +601,7 @@ class Admin_Model extends Model {
         if (!empty($data['videos'])) {
             foreach ($data['videos'] as $item) {
                 $this->db->insert('post_archivo', array(
-                    'id_post' => $id_post,
+                    'id_post' => $id,
                     'id_tipo_archivo' => 2,
                     'descripcion' => $item,
                     'img_principal' => 0,

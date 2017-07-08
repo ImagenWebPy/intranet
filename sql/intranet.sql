@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50714
-Source Host           : localhost:3306
+Source Server         : aws-garden
+Source Server Version : 50556
+Source Host           : ec2-34-209-83-134.us-west-2.compute.amazonaws.com:3306
 Source Database       : intranet
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2017-07-03 14:26:49
+Date: 2017-07-08 08:17:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `post` (
   `fecha` datetime DEFAULT NULL,
   `estado` int(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
@@ -93,6 +93,7 @@ INSERT INTO `post` VALUES ('5', 'Inter Run 2017', '<p>El Jeep Renegade presente 
 INSERT INTO `post` VALUES ('6', 'Lanzamiento Jeep Renegade', null, 'jeep,renegade,lanzamiento', '2016-06-08 18:11:10', '1');
 INSERT INTO `post` VALUES ('7', 'World Premiere de la Nueva Jeep® Compass 2017!', null, 'jeep,compass,lanzamiento', '2016-11-16 18:20:51', '1');
 INSERT INTO `post` VALUES ('8', 'Desembarco oficial de Jack Daniel\'s', '<p>Resumen de la fantástica noche que vivimos ayer en el desembarco oficial de Jack Daniel\'s al país. Una fiesta a la que Jeep, no podia faltar.</p>', 'jeep,jacks daniels,jack\'s daniels,desembarco,oficial', '2017-06-08 15:07:27', '1');
+INSERT INTO `post` VALUES ('9', 'NISSAN trae Actitud al país', '<p><strong>Garden Automotores S.A. presenta al totalmente NUEVO NISSAN KICKS.</strong></p>\r\n\r\n<p>En un evento cargado de mucha Actitud!, el pasado&nbsp; mi&eacute;rcoles 5 de julio en el hall central de Shopping del Sol, el <strong>Grupo Garden </strong>present&oacute; oficialmente ante la prensa e invitados especiales, al totalmente <strong>Nuevo NISSAN KICKS</strong>; el nuevo SUV compacto de la prestigiosa marca japonesa de veh&iacute;culos <strong>NISSAN</strong>.&nbsp;</p>\r\n\r\n<p>Bajo el concepto de <strong>Actitud busca Actitud, </strong>el <strong>Nuevo NISSAN KICKS</strong> se dirige a un p&uacute;blico en&eacute;rgico, de mucha personalidad, de pura actitud, que busca encontrarse con su singularidad!</p>\r\n\r\n<p>El <strong>Nuevo NISSAN KICKS</strong> ha sido premiado como el <strong>Mejor SUV Compacto</strong> de Latinoam&eacute;rica, distinci&oacute;n otorgada por AMERICAR (Asociaci&oacute;n Am&eacute;rica Latina de Prensa de Autos). Adem&aacute;s,&nbsp; obtuvo otros reconocimientos&nbsp; tales como,&nbsp; el de <strong>Mejor SUV Compacto</strong> otorgado por L&acute;Auto Preferita y como el de <strong>Mejor SUV Compacto</strong> en los premios Top Car.</p>\r\n\r\n<p>El totalmente <strong>Nuevo NISSAN KICKS</strong>&nbsp; se encuentra disponible para todo aquel que desee realizar un testdrive en el Showroom de NISSAN Paraguay, ubicado sobre la Avda. Mcal. L&oacute;pez 5557y Rogelio Benitez.</p>\r\n\r\n<p><strong>Nuevo NISSAN KICKS</strong></p>\r\n\r\n<p>El <strong>Nuevo NISSAN KICKS</strong> se presenta con una personalidad en&eacute;rgica y juvenil. Es un SUV compacto que cuenta con un motor de tercera generaci&oacute;n de 1.6L y 118 HP, que&nbsp; gracias a su chasis ligero, logra un excelente desempe&ntilde;o en potencia, garantizando un menor consumo de combustible.</p>\r\n\r\n<p>El <strong>Nuevo NISSAN KICKS</strong> cuenta con un equipamiento de vanguardia , donde podemos destacar su Asistente de Ascenso en Pendientes (que evita que el veh&iacute;culo se deslice hacia atr&aacute;s al liberar el freno en una pendiente), como adem&aacute;s el Rear Sonar System (que emite alertas para el conductor cuando detecta objetos al estacionarse y/o conducir en reversa), donde ambos combinan tecnolog&iacute;a y confort, otorgando una mayor seguridad en el andar.</p>\r\n', 'nissan,cuevas,garden,kicks', '2017-07-05 14:51:49', '1');
 
 -- ----------------------------
 -- Table structure for `post_archivo`
@@ -110,7 +111,7 @@ CREATE TABLE `post_archivo` (
   KEY `fk_idtipoarchivo_pa` (`id_tipo_archivo`),
   CONSTRAINT `fk_idpost_pa` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idtipoarchivo_pa` FOREIGN KEY (`id_tipo_archivo`) REFERENCES `post_archivo` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_archivo
@@ -148,6 +149,8 @@ INSERT INTO `post_archivo` VALUES ('30', '7', '1', 'lanzamiento_compass_2016.jpg
 INSERT INTO `post_archivo` VALUES ('31', '7', '2', 'lanzamiento_compass_2016.mp4', '0', '1');
 INSERT INTO `post_archivo` VALUES ('32', '8', '2', 'lanzamiento_jackdaniels_jeep.mp4', '0', '1');
 INSERT INTO `post_archivo` VALUES ('33', '8', '1', 'lanzamiento_jeep_jackdaniels.jpg', '1', '1');
+INSERT INTO `post_archivo` VALUES ('35', '9', '2', 'WhatsApp Video 2017-07-06 at 1.32.52 PM.mp4', '0', '1');
+INSERT INTO `post_archivo` VALUES ('38', '9', '1', 'Sin_titulo_kicks.png', '1', '1');
 
 -- ----------------------------
 -- Table structure for `post_categoria`
@@ -162,7 +165,7 @@ CREATE TABLE `post_categoria` (
   KEY `fk_idcategoria_pc` (`id_categoria`),
   CONSTRAINT `fk_idcategoria_pc` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_idpost_pc` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_categoria
@@ -175,6 +178,7 @@ INSERT INTO `post_categoria` VALUES ('5', '5', '6');
 INSERT INTO `post_categoria` VALUES ('6', '6', '6');
 INSERT INTO `post_categoria` VALUES ('7', '7', '6');
 INSERT INTO `post_categoria` VALUES ('8', '8', '6');
+INSERT INTO `post_categoria` VALUES ('9', '9', '12');
 
 -- ----------------------------
 -- Table structure for `post_tipo`
@@ -189,7 +193,7 @@ CREATE TABLE `post_tipo` (
   KEY `fk_id_tipopost_pt` (`id_tipo_evento`),
   CONSTRAINT `fk_id_post_pt` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_id_tipopost_pt` FOREIGN KEY (`id_tipo_evento`) REFERENCES `tipo_evento` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post_tipo
@@ -202,6 +206,7 @@ INSERT INTO `post_tipo` VALUES ('5', '5', '2');
 INSERT INTO `post_tipo` VALUES ('6', '6', '1');
 INSERT INTO `post_tipo` VALUES ('7', '7', '1');
 INSERT INTO `post_tipo` VALUES ('8', '8', '1');
+INSERT INTO `post_tipo` VALUES ('9', '9', '1');
 
 -- ----------------------------
 -- Table structure for `tipo_archivo`
