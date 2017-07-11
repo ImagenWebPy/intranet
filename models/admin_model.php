@@ -185,10 +185,10 @@ class Admin_Model extends Model {
                                         <div class="alert alert-warning alert-dismissible">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                             <h4><i class="icon fa fa-warning"></i> Importante!</h4>
-                                            Solo se permiten imagenes <strong>.jpg,.png</strong>. Tamaño máximo <strong>512KB</strong>
+                                            Solo se permiten imagenes <strong>.jpg,.png</strong>. Subir imagenes en formato horizontal, porque se redimensionan automaticamente a las dimensiones 1280 x 720.
                                          </div>
                                     </div>
-                                    <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%;">
+                                    <div class="html5fileupload demo_multi" data-multiple="true" data-url="' . URL . 'admin/uploadImage" data-valid-extensions="JPG,JPEG,jpg,png,jpeg" style="width: 100%;">
                                         <input type="file" name="file" />
                                     </div>
                                     <script>
@@ -502,10 +502,10 @@ class Admin_Model extends Model {
                                             <div class="alert alert-warning alert-dismissible">
                                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                                 <h4><i class="icon fa fa-warning"></i> Importante!</h4>
-                                                Solo se permiten imagenes <strong>.jpg,.png</strong>. Tamaño máximo <strong>512KB</strong>
+                                                Solo se permiten imagenes <strong>.jpg,.png</strong>. Subir imagenes en formato horizontal, porque se redimensionan automaticamente a las dimensiones 1280 x 720.
                                              </div>
                                         </div>
-                                        <div class="html5fileupload demo_multi" data-multiple="true" data-form="true" data-max-filesize="512000" data-valid-extensions="jpg,png,jpeg" style="width: 100%; display: inline-block;">
+                                        <div class="html5fileupload demo_multi" data-multiple="true" data-form="true" data-valid-extensions="JPG,JPEG,jpg,png,jpeg" style="width: 100%; display: inline-block;">
                                             <input type="file" name="file_archivo[]" />
                                         </div>
                                         <script>

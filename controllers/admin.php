@@ -91,6 +91,7 @@ class Admin extends Controller {
     public function uploadImage() {
         if (!empty($_POST)) {
             $idPost = $_POST['data']['id'];
+
             $error = false;
             $absolutedir = dirname(__FILE__);
             $dir = 'public/archivos/';
@@ -100,14 +101,24 @@ class Admin extends Controller {
             $ext = explode('.', $_POST['filename']);
             $extension = strtolower(end($ext));
             $name = $_POST['name'];
-            $filename = $idPost . '_' . $name . '.' . $extension;
-            $filename = $this->helper->cleanUrl($filename);
+            $filename = $this->helper->cleanUrl($idPost . '_' . $name);
+            $filename = $filename . '.' . $extension;
             //$filename				= $file.'.'.substr(sha1(time()),0,6).'.'.$extension;
 
             $handle = fopen($serverdir . $filename, 'w');
             fwrite($handle, $file);
             fclose($handle);
-
+            #############
+            #SE REDIMENSIONA LA IMAGEN
+            #############
+            # ruta de la imagen a redimensionar 
+            $imagen = "public/archivos/$filename";
+            # ruta de la imagen final, si se pone el mismo nombre que la imagen, esta se sobreescribe 
+            $imagen_final = $filename;
+            $ancho = 1280;
+            $alto = 720;
+            $this->helper->redimensionar($imagen, $imagen_final, $ancho, $alto);
+            #############
             header('Content-type: application/json; charset=utf-8');
             $data = array(
                 'id' => $idPost,
@@ -115,7 +126,6 @@ class Admin extends Controller {
             );
             $response = $this->model->uploadImage($data);
             echo json_encode($response);
-
             //echo json_encode(array('result'=>true));
         } else {
             $filename = basename($_SERVER['QUERY_STRING']);
@@ -239,6 +249,17 @@ class Admin extends Controller {
             $handle = fopen($serverdir . $fname, 'w');
             fwrite($handle, $contents);
             fclose($handle);
+            #############
+            #SE REDIMENSIONA LA IMAGEN
+            #############
+            # ruta de la imagen a redimensionar 
+            $imagen = "public/archivos/$fname";
+            # ruta de la imagen final, si se pone el mismo nombre que la imagen, esta se sobreescribe 
+            $imagen_final = $fname;
+            $ancho = 1280;
+            $alto = 720;
+            $this->helper->redimensionar($imagen, $imagen_final, $ancho, $alto);
+            #############
             $imagenes [] = $fname;
         }
         #VIDEO
