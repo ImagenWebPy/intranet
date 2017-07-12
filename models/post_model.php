@@ -42,6 +42,7 @@ class Post_Model extends Model {
                                 ORDER BY p.fecha DESC
                                 LIMIT $items_per_page");
         $lista = '';
+        $fechaUltimoPost = '';
         foreach ($sql as $contenido) {
             $tituloPost = (strlen($contenido['titulo']) > 35) ? substr(utf8_encode($contenido['titulo']), 0, 35) . '...' : utf8_encode($contenido['titulo']);
             $fechaPost = $this->helper->mesEspanol(date('F', strtotime($contenido['fecha']))) . '-' . date('Y', strtotime($contenido['fecha']));

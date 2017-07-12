@@ -328,7 +328,7 @@ class Helper {
             case 'january':
                 $mes = 'Enero';
                 break;
-            case 'february  ':
+            case 'february':
                 $mes = 'Febrero';
                 break;
             case 'march':
@@ -345,6 +345,9 @@ class Helper {
                 break;
             case 'july':
                 $mes = 'Julio';
+                break;
+            case 'august':
+                $mes = 'Agosto';
                 break;
             case 'september':
                 $mes = 'Septiembre';
