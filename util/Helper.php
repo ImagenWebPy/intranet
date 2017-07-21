@@ -555,7 +555,7 @@ class Helper {
 
         if ($tipo == 3)  // PNG 
             if (function_exists("imagepng"))
-                imagepng($img2, "public/archivos/$nameFile", 60);
+                imagepng($img2, "public/archivos/$nameFile", 6);
             else
                 return false;
 
